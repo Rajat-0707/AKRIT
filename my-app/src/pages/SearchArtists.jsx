@@ -270,7 +270,7 @@ const SearchArtists = () => {
                   <div key={artist.id} className="artist-card">
                     <Card className="card">
                       <img
-                        src={artist.img || artist.img_url || '/public/avt.png'}
+                        src={artist.img || artist.img_url || '/avt.png'}
                         alt={artist.name}
                         className="card-image"
                       />
