@@ -11,7 +11,7 @@ const AboutUs = () => {
             <img src="/public/bgmain.png" alt="Showcase 1" />
           </div>
           <div className="aboutus-card aboutus-card--wide">
-            <img src="/public/bgmain.png" alt="Showcase 2" />
+            <img src="/bgmain.png" alt="Showcase 2" />
           </div>
           <div className="aboutus-badge">
             
