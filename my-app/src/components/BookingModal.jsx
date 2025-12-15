@@ -65,7 +65,7 @@ export default function BookingModal({ artist, onClose, onSuccess }) {
 
             <div className="booking-artist-info">
               <img
-                src={artist.img || artist.img_url || '/public/avt.png'}
+                src={artist.img || artist.img_url || '/avt.png'}
                 alt={artist.name}
                 className="booking-artist-avatar"
               />
