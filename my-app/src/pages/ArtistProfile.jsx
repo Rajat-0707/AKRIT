@@ -35,7 +35,7 @@ export default function ArtistProfile() {
       setError("");
       try {
         // Fallback: fetch a reasonable batch and find by id client-side
-        const data = await fetchJSON(`${apiBase()}/artists?limit=200`);
+        const data = await fetchJSON(`${apiBase()}/api/artists?limit=200`);
         const items = Array.isArray(data.items) ? data.items : [];
         const found = items.find((a) => String(a.id) === String(id));
         if (!mounted) return;
