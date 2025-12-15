@@ -1,7 +1,7 @@
 export function apiBase() {
   if (typeof window !== 'undefined') {
     // Production (Vercel)
-    if (process.env.NEXT_PUBLIC_API_URL) {
+    if (process.env.PUBLIC_API_URL) {
       return process.env.NEXT_PUBLIC_API_URL;
     }
     
