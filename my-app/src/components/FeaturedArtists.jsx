@@ -50,7 +50,7 @@ const FeaturedArtists = () => {
             items.map((artist) => (
               <div key={artist.id} className="artist-card">
                 <Card className="card">
-                  <img src={artist.img || artist.img_url || '/public/avt.png'}
+                  <img src={artist.img || artist.img_url || '/avt.png'}
                        alt={artist.name}
                        className="card-image" />
                   <CardContent className="card-content" id="feat">
