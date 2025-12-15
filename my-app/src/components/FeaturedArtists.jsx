@@ -53,7 +53,7 @@ const FeaturedArtists = () => {
                   <img src={artist.img || artist.img_url || '/public/avt.png'}
                        alt={artist.name}
                        className="card-image" />
-                  <CardContent className="card-content">
+                  <CardContent className="card-content" id="feat">
                     <h3 className="card-title">{artist.name}</h3>
                     {artist.role && <p className="card-role">{artist.role}</p>}
                     <Button
