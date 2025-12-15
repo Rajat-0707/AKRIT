@@ -567,7 +567,8 @@ body {
 }
 
 #feat{
-   background-image: url('/featuring.png');}
+   background-image: url('/featuring.png');
+}
 .card-content {
   padding: 1rem 1rem 1.25rem 1rem;
   text-align: center;
