@@ -4,10 +4,11 @@ const About = () => {
   return (
     <section className="about-section">
       <div className="section-container">
+         <img src="/logo.png" alt="Akrit logo" style={{ height: 48, width: 48, objectFit: "contain", marginBottom: 12 }} />
         <h2>About Akrit</h2>
         <div className="about-content">
           <div className="about-image">
-            <img src="/bgmain.png" alt="Akrit showcase" />
+            <img src="/logo.png" alt="Akrit showcase" />
           </div>
           <div className="about-text">
             <h3>Our Mission</h3>
