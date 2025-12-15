@@ -35,7 +35,7 @@ export default function ArtistDashboard({ showLayout = true }) {
       setError("");
       try {
         console.log("ArtistDashboard: Fetching artist profile...");
-        const res = await authFetch(`${apiBase()}/artist/me`);
+        const res = await authFetch(`${apiBase()}/api/artist/me`);
         console.log("ArtistDashboard: API response status:", res.status);
         const raw = await res.text();
         console.log("ArtistDashboard: Raw response:", raw);
@@ -624,7 +624,7 @@ export default function ArtistDashboard({ showLayout = true }) {
                             formData.append("img", form.img);
                             formData.append("photo", form.newPhoto);
                             
-                            const res = await authFetch(`${apiBase()}/artist/update`, {
+                            const res = await authFetch(`${apiBase()}/api/artist/update`, {
                               method: 'POST',
                               body: formData,
                             });
@@ -633,7 +633,7 @@ export default function ArtistDashboard({ showLayout = true }) {
                             setProfile(p=>({ ...(p||{}), name: form.name, city: form.city, service: form.service, bio: form.bio, img: data.img || form.img }));
                           } else {
                             // Use JSON for regular updates
-                            const res = await authFetch(`${apiBase()}/artist/update`, { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ name: form.name, city: form.city, service: form.service, bio: form.bio, img: form.img }) });
+                            const res = await authFetch(`${apiBase()}/api/artist/update`, { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ name: form.name, city: form.city, service: form.service, bio: form.bio, img: form.img }) });
                             const data = await res.json();
                             if (!res.ok || data.success === false) throw new Error(data.error || `Failed (${res.status})`);
                             setProfile(p=>({ ...(p||{}), name: form.name, city: form.city, service: form.service, bio: form.bio, img: form.img }));
@@ -677,7 +677,7 @@ export default function ArtistDashboard({ showLayout = true }) {
                         setSaving(true);
                         try {
                           const payload = { budget_min: form.budget_min === '' ? null : Number(form.budget_min), budget_max: form.budget_max === '' ? null : Number(form.budget_max) };
-                          const res = await authFetch(`${apiBase()}/artist/update`, { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(payload) });
+                          const res = await authFetch(`${apiBase()}/api/artist/update`, { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(payload) });
                           const data = await res.json();
                           if (!res.ok || data.success === false) throw new Error(data.error || `Failed (${res.status})`);
                           setProfile(p=>({ ...(p||{}), budget_min: payload.budget_min, budget_max: payload.budget_max }));
@@ -720,7 +720,7 @@ export default function ArtistDashboard({ showLayout = true }) {
                       <Button className="btn btn-purple" disabled={saving} onClick={async()=>{
                         setSaving(true);
                         try {
-                          const res = await authFetch(`${apiBase()}/artist/update`, { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ availability: form.availability }) });
+                          const res = await authFetch(`${apiBase()}/api/artist/update`, { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ availability: form.availability }) });
                           const data = await res.json();
                           if (!res.ok || data.success === false) throw new Error(data.error || `Failed (${res.status})`);
                           setProfile(p=>({ ...(p||{}), availability: form.availability }));
