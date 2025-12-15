@@ -566,10 +566,12 @@ body {
   filter: saturate(108%) contrast(105%) brightness(103%);
 }
 
+#feat{
+   background-image: url('/featuring.png');}
 .card-content {
   padding: 1rem 1rem 1.25rem 1rem;
   text-align: center;
-  background-image: url('/featuring.png');
+ 
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
