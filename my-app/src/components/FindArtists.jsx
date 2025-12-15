@@ -36,7 +36,7 @@ const FindArtists = () => {
         if (location.trim()) params.set("location", location.trim());
         if (minBudget !== "") params.set("minBudget", String(Number(minBudget) || 0));
         if (maxBudget !== "") params.set("maxBudget", String(Number(maxBudget) || 0));
-        const url = `${apiBase()}/artists?${params.toString()}`;
+        const url = `${apiBase()}/api/artists?${params.toString()}`;
         const data = await fetchJSON(url);
         if (!mounted) return;
         setResults(Array.isArray(data.items) ? data.items : []);
