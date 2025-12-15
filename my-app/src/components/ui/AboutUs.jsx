@@ -8,7 +8,7 @@ const AboutUs = () => {
       <div className="aboutus-container">
         <div className="aboutus-left">
           <div className="aboutus-card aboutus-card--tall">
-            <img src="/public/bgmain.png" alt="Showcase 1" />
+            <img src="/bgmain.png" alt="Showcase 1" />
           </div>
           <div className="aboutus-card aboutus-card--wide">
             <img src="/bgmain.png" alt="Showcase 2" />
