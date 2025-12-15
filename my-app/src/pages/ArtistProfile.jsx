@@ -76,7 +76,7 @@ export default function ArtistProfile() {
           <section className="profile-hero">
             <div className="profile-media">
               <img
-                src={artist.img || artist.img_url || '/public/avt.png'}
+                src={artist.img || artist.img_url || '/avt.png'}
                 alt={artist.name}
                 className="profile-avatar"
               />
