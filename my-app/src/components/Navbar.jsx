@@ -71,8 +71,7 @@ const Navbar = () => {
   return (
     <nav className="navbar">
       <Link to="/" className="navbar-title" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
-        <img src="/logo.png" alt="Akrit logo" style={{ height: 36, width: 36, objectFit: "contain", marginRight: 8 , display: "inline-block"}} />
-        Akrit
+ <img src="/logo.png" alt="Akrit logo" style={{ height: 36, width: 36, objectFit: "contain", marginRight: 8 , display: "inline-block", backgroundColor: "transparent"}} />        Akrit
       </Link>
 
       <div className="navbar-menu desktop-menu">
