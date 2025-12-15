@@ -21,7 +21,7 @@ const App = () => {
   useEffect(() => {
     const token = getToken();
     if (!token) return;
-    fetch(`${apiBase()}/me`, {
+    fetch(`${apiBase()}/api/me`, {
       headers: { Authorization: `Bearer ${token}` },
     })
       .then(async (res) => {
