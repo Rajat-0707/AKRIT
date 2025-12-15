@@ -1,6 +1,5 @@
 import { Routes, Route } from "react-router-dom";
-import { Navigate } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { apiBase } from "./utils/api";
 import Home from "./pages/Home";
 import About from "./pages/About";
@@ -18,23 +17,45 @@ import "./App.css";
 import { getToken, clearToken } from "./utils/auth";
 
 const App = () => {
+  // ✅ NEW: auth hydration flag
+  const [authChecked, setAuthChecked] = useState(false);
+
   useEffect(() => {
     const token = getToken();
-    if (!token) return;
+
+    // No token → auth resolved
+    if (!token) {
+      setAuthChecked(true);
+      return;
+    }
+
     fetch(`${apiBase()}/api/me`, {
       headers: { Authorization: `Bearer ${token}` },
     })
       .then(async (res) => {
         const data = await res.json().catch(() => ({}));
         if (!res.ok || !data.success) throw new Error("Invalid token");
-        // Cache lightweight user profile for UI usage
-        try { localStorage.setItem("ac_user", JSON.stringify(data.user)); } catch {}
+        try {
+          localStorage.setItem("ac_user", JSON.stringify(data.user));
+        } catch {}
       })
       .catch(() => {
         clearToken();
-        try { localStorage.removeItem("ac_user"); } catch {}
+        try {
+          localStorage.removeItem("ac_user");
+        } catch {}
+      })
+      .finally(() => {
+        // ✅ auth finished (success or fail)
+        setAuthChecked(true);
       });
   }, []);
+
+  // 🚨 BLOCK rendering until auth is ready
+  if (!authChecked) {
+    return null; // or loader if you want
+  }
+
   return (
     <Routes>
       <Route path="/" element={<Home />} />
