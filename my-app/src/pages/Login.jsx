@@ -23,7 +23,7 @@ const Login = () => {
     setError("");
     setLoading(true);
     try {
-      const data = await fetchJSON(`${apiBase()}/login`, {
+      const data = await fetchJSON(`${apiBase()}/api/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
