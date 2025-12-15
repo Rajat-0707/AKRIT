@@ -37,7 +37,7 @@ const Login = () => {
       if ((data.user?.role || '') === 'artist') {
         navigate("/");
       } else {
-        navigate("/search");
+        navigate("/");
       }
     } catch (err) {
       setError(err.message || "Something went wrong");
