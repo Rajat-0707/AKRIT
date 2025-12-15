@@ -173,7 +173,7 @@ export default function MyRequests() {
                           src={
                             booking.artist_id?.img_url ||
                             booking.artist_id?.img ||
-                            '/public/avt.png'
+                            '/avt.png'
                           }
                           alt={booking.artist_id?.name}
                           className="artist-avatar"
