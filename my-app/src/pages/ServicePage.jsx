@@ -56,7 +56,7 @@ export default function ServicePage() {
         if (sortBy !== "featured") {
           params.set("sort", sortBy);
         }
-        const url = `${apiBase()}/artists?${params.toString()}`;
+        const url = `${apiBase()}/api/artists?${params.toString()}`;
         const data = await fetchJSON(url);
         if (!mounted) return;
         setItems(Array.isArray(data.items) ? data.items : []);
