@@ -30,7 +30,7 @@ export default function MyRequests() {
     setLoading(true);
     setError("");
     try {
-      const res = await authFetch(`${apiBase()}/bookings/my-requests`);
+      const res = await authFetch(`${apiBase()}/api/bookings/my-requests`);
       const data = await res.json();
 
       if (!res.ok || data.success === false) {
@@ -52,7 +52,7 @@ export default function MyRequests() {
     }
 
     try {
-      const res = await authFetch(`${apiBase()}/bookings/${bookingId}`, {
+      const res = await authFetch(`${apiBase()}/api/bookings/${bookingId}`, {
         method: "DELETE",
       });
 
