@@ -568,14 +568,13 @@ body {
 
 #feat{
    background-image: url('/featuring.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat
 }
 .card-content {
   padding: 1rem 1rem 1.25rem 1rem;
   text-align: center;
- 
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
 }
 
 /* Soft divider between media and content if images are transparent */
