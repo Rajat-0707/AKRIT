@@ -33,12 +33,12 @@ const ArtistAuth = () => {
         formData.append("password", password);
         formData.append("photo", photoFile);
         
-        const data = await fetchJSON(`${apiBase()}/register`, {
+        const data = await fetchJSON(`${apiBase()}/api/register`, {
           method: "POST",
           body: formData,
         });
       } else {
-        const data = await fetchJSON(`${apiBase()}/register`, {
+        const data = await fetchJSON(`${apiBase()}/api/register`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
