@@ -31,7 +31,7 @@ export default function ReceivedBookings() {
     setLoading(true);
     setError("");
     try {
-      const res = await authFetch(`${apiBase()}/bookings/received`);
+      const res = await authFetch(`${apiBase()}/api/bookings/received`);
       const data = await res.json();
 
       if (!res.ok || data.success === false) {
@@ -49,7 +49,7 @@ export default function ReceivedBookings() {
 
   const updateBookingStatus = async (bookingId, status) => {
     try {
-      const res = await authFetch(`${apiBase()}/bookings/${bookingId}/status`, {
+      const res = await authFetch(`${apiBase()}/api/bookings/${bookingId}/status`, {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ 
