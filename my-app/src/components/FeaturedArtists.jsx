@@ -18,7 +18,7 @@ const FeaturedArtists = () => {
       setLoading(true);
       setError("");
       try {
-        const url = `${apiBase()}/artists?limit=8`;
+        const url = `${apiBase()}/api/artists?limit=8`;
         const data = await fetchJSON(url);
         if (!mounted) return;
         setItems(Array.isArray(data.items) ? data.items : []);
