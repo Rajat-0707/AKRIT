@@ -58,8 +58,7 @@ const Login = () => {
               community. New here? Create an account in seconds.
             </p>
             <div style={{ marginTop: 12 }}>
-              <Link to="/auth" className="btn btn-outline">Create an account</Link>
-            </div>
+<Link to="/auth" className="btn btn-outlinehover:bg-blue-50 transition-colors duration-200 hover:text-blue-700">Create an account</Link>            </div>
           </section>
 
           <section className="auth-card">
