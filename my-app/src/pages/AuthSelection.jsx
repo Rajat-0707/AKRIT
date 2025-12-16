@@ -15,8 +15,8 @@ const AuthSelection = () => {
             <p className="auth-subtitle">Choose your account type to get started</p>
           </div>
 
-          <div className="account-type-cards" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
-            <Link className="account-type-card" to="/auth/client" style={{
+<div className="account-type-cards" style={{ display: "grid", gridTemplateRows: "1fr 1fr", gap: 16 }}>
+  <Link className="account-type-card" to="/auth/client" style={{
               border: "1px solid rgba(17,24,39,0.08)", borderRadius: 16, padding: 20, textDecoration: "none", color: "inherit",
               background: "#fff", boxShadow: "0 6px 16px rgba(0,0,0,0.06)"
             }}>
