@@ -1,7 +1,7 @@
 # AKRIT 
 
 ## Overview
-This document describes the complete booking and messaging system implemented for the artist booking platform. Users (clients) can now send booking requests to artists, and artists can manage these requests through their dashboard.
+This document describes the complete booking and messaging system implemented for the akrit platform. Users (clients) can now send booking requests to artists, and artists can manage these requests through their dashboard.
 
 ---
 
