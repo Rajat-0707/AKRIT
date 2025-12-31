@@ -1,4 +1,6 @@
-# Booking System - Quick Setup Guide
+# AKRIT
+
+ its a platform that connects artists like singers, choreographers, etc with comoon people and event organisers. 
 
 ## Prerequisites
 - Node.js installed
