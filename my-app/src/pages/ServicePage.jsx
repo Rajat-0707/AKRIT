@@ -6,7 +6,6 @@ import "./css/ServicePage.css";
 import { apiBase, fetchJSON } from "../utils/api";
 import { getUser } from "../utils/auth";
 
-// Enhanced service meta with more details
 const serviceMeta = {
   singer: {
     name: 'Professional Vocalists',
@@ -120,7 +119,6 @@ export default function ServicePage() {
       {/* Main Content */}
       <main className="service-main">
         <div className="container">
-          {/* Header with Sort */}
           <div className="content-header">
             <div className="header-info">
               <h2>Available Artists</h2>
@@ -143,7 +141,6 @@ export default function ServicePage() {
             </div>
           </div>
 
-          {/* Loading State */}
           {loading && (
             <div className="loading-state">
               <div className="spinner"></div>
@@ -151,7 +148,6 @@ export default function ServicePage() {
             </div>
           )}
 
-          {/* Error State */}
           {error && (
             <div className="error-state">
               <div className="error-icon">⚠️</div>
@@ -163,7 +159,6 @@ export default function ServicePage() {
             </div>
           )}
 
-          {/* Artists Grid */}
           {!loading && !error && (
             <>
               {items.length === 0 ? (

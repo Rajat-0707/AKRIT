@@ -21,7 +21,6 @@ const ArtistAuth = () => {
       const photoFile = fd.get("photo");
       
       if (photoFile && photoFile.size > 0) {
-        // Use FormData for file upload
         const formData = new FormData();
         formData.append("role", "artist");
         formData.append("name", fd.get("name") || "");
