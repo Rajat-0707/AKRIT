@@ -112,7 +112,7 @@ body {
   transform: translateX(-50%);
   background-color: var(--primary-purple);
   transition: width 0.2s ease;
-  border-radius: 2px;
+  border-radius: 8px;
 }
 
 .nav-item:hover, 
@@ -190,17 +190,13 @@ body {
   transform: rotate(180deg);
 }
 
-/* Focus states for accessibility */
 .nav-item:focus-visible,
 .dropdown:focus-visible {
   outline: 2px solid var(--primary-purple);
   outline-offset: 2px;
-  border-radius: 4px;
+  border-radius: 16px;
 }
 
-/* ==============================================
-   3. Hero Section
-   ============================================== */
 .hero-section {
   text-align: center;
   padding: 6rem 1.5rem;
@@ -383,12 +379,10 @@ body {
 .back-button:hover svg {
   transform: translateX(-2px);
 }
-
-/* Sort Dropdown */
 .sort-dropdown {
   background: white;
   border: 1px solid var(--border-color);
-  border-radius: 0.375rem;
+  border-radius: 0.5rem;
   padding: 0.5rem 2.5rem 0.5rem 0.75rem;
   font-size: 0.875rem;
   color: var(--text-primary);

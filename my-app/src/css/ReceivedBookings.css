@@ -12,7 +12,7 @@
 .header-content {
   background: white;
   padding: 2rem;
-  border-radius: 4px;
+  border-radius: 12px;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
 }
 
@@ -44,7 +44,7 @@
 .filter-bar {
   background: white;
   padding: 1.5rem;
-  border-radius: 4px;
+  border-radius: 12px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
   margin-bottom: 2rem;
 }
@@ -59,7 +59,7 @@
   padding: 0.75rem 1.5rem;
   border: 2px solid #e2e8f0;
   background: white;
-  border-radius: 4px;
+  border-radius: 12px;
   font-size: 0.875rem;
   font-weight: 600;
   color: #475569;
@@ -84,7 +84,7 @@
   text-align: center;
   padding: 4rem 2rem;
   background: white;
-  border-radius: 4px;
+  border-radius: 12px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
@@ -130,7 +130,7 @@
 
 .booking-card {
   background: white;
-  border-radius: 4px;
+  border-radius: 12px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
@@ -162,7 +162,7 @@
 .client-avatar {
   width: 60px;
   height: 60px;
-  border-radius: 4px;
+  border-radius: 12px;
   background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
   color: white;
   display: flex;
@@ -188,7 +188,7 @@
 
 .status-badge {
   padding: 0.375rem 0.75rem;
-  border-radius: 4px;
+  border-radius: 12px;
   font-size: 0.75rem;
   font-weight: 600;
   text-transform: uppercase;
@@ -227,7 +227,7 @@
   margin-bottom: 1.5rem;
   padding: 1rem;
   background: #f8fafc;
-  border-radius: 4px;
+  border-radius: 12px;
 }
 
 .detail-row {
@@ -253,7 +253,7 @@
 .your-response {
   padding: 1rem;
   background: #f8fafc;
-  border-radius: 4px;
+  border-radius: 12px;
   margin-bottom: 1rem;
 }
 
@@ -289,7 +289,7 @@
   width: 100%;
   padding: 0.75rem;
   border: 2px solid #e2e8f0;
-  border-radius: 4px;
+  border-radius: 12px;
   font-size: 0.875rem;
   font-family: inherit;
   resize: vertical;
@@ -322,7 +322,7 @@
   background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
   color: white;
   border: none;
-  border-radius: 4px;
+  border-radius: 12px;
 }
 
 .respond-btn:hover {
@@ -336,7 +336,7 @@
   background: linear-gradient(135deg, #10b981 0%, #059669 100%);
   color: white;
   border: none;
-  border-radius: 4px;
+  border-radius: 12px;
 }
 
 .accept-btn:hover {
@@ -350,7 +350,7 @@
   background: white;
   color: #ef4444;
   border: 2px solid #ef4444;
-  border-radius: 4px;
+  border-radius: 12px;
 }
 
 .reject-btn:hover {
@@ -365,7 +365,7 @@
   background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
   color: white;
   border: none;
-  border-radius: 4px;
+  border-radius: 12px;
 }
 
 .complete-btn:hover {
@@ -426,53 +426,53 @@
   }
 
   .header-content {
-    border-radius: 4px;
+    border-radius: 12px;
   }
 
   .filter-bar {
-    border-radius: 4px;
+    border-radius: 12px;
   }
 
   .loading-state,
   .error-state,
   .empty-state {
-    border-radius: 4px;
+    border-radius: 12px;
   }
 
   .booking-card {
-    border-radius: 4px;
+    border-radius: 12px;
   }
 
   .booking-details {
-    border-radius: 4px;
+    border-radius: 12px;
   }
 
   .client-message,
   .your-response {
-    border-radius: 4px;
+    border-radius: 12px;
   }
 
   .status-badge {
-    border-radius: 4px;
+    border-radius: 12px;
   }
 
   .response-textarea {
-    border-radius: 4px;
+    border-radius: 12px;
   }
 
   .respond-btn {
-    border-radius: 4px;
+    border-radius: 12px;
   }
 
   .accept-btn {
-    border-radius: 4px;
+    border-radius: 12px;
   }
 
   .reject-btn {
-    border-radius: 4px;
+    border-radius: 12px;
   }
 
   .complete-btn {
-    border-radius: 4px;
+    border-radius: 12px;
   }
 }
