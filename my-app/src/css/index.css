@@ -1,13 +1,12 @@
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
 
+
+
+
+
 :root {
-  --primary-purple: #6D28D9; /* A deep, professional purple */
+  --primary-purple: #6D28D9; 
   --primary-purple-light: #8B5CF6;
   --background-light: #F9FAFB;
   --background-white: #FFFFFF;
@@ -20,14 +19,6 @@
   --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
   --border-radius: 0.75rem; /* 12px */
 }
-/* 
-body{
-  background-image: url('/public/bgmain.png');
-  background-size: cover;
-  background-position: center;
-} */
-
-/* --- Global Resets & Base Styles --- */
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
@@ -49,9 +40,6 @@ body {
   min-height: 100vh;
 }
 
-/* ==============================================
-   2. Navbar & Dropdown Menu
-   ============================================== */
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -128,7 +116,6 @@ body {
   width: calc(100% - 1rem);
 }
 
-/* Dropdown Menu */
 .dropdown {
   position: relative;
   height: 100%;
@@ -225,10 +212,6 @@ body {
   flex-wrap: wrap;
 }
 
-/* ==============================================
-   3. Service Page Styles
-   ============================================== */
-/* Service Hero Section */
 .service-hero {
   background: linear-gradient(135deg, var(--primary-purple) 0%, var(--primary-purple-light) 100%);
   position: relative;
@@ -272,7 +255,6 @@ body {
   position: relative;
 }
 
-/* Service Content */
 .service-container {
   max-width: 1200px;
   margin: 0 auto;
@@ -299,7 +281,6 @@ body {
   font-weight: 600;
 }
 
-/* Artist/Service Cards */
 .service-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -357,7 +338,6 @@ body {
   border-top: 1px solid var(--border-color);
 }
 
-/* Back Button */
 .back-button {
   display: inline-flex;
   align-items: center;
@@ -400,7 +380,6 @@ body {
   box-shadow: 0 0 0 3px rgba(109, 40, 217, 0.1);
 }
 
-/* Responsive Adjustments */
 @media (max-width: 768px) {
   .service-hero h1 {
     font-size: 2rem;
@@ -420,9 +399,6 @@ body {
   }
 }
 
-/* ==============================================
-   4. Buttons
-   ============================================== */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -472,9 +448,6 @@ body {
   background-image: none;
 }
 
-/* ==============================================
-   5. Content Sections (Artists, About, Contact)
-   ============================================== */
 .artists-section {
   padding: 4rem 5%;
   flex-grow: 1; /* For footer positioning */
@@ -509,9 +482,6 @@ body {
   margin: 0 auto;
 }
 
-/* ==============================================
-   6. Card Component
-   ============================================== */
 .card {
   background-color: var(--background-white);
   border-radius: var(--border-radius);
@@ -531,10 +501,8 @@ body {
   border-color: rgba(109, 40, 217, 0.25);
 }
 
-/* Slightly larger rounding for artist cards */
 .artist-card .card {
   border-radius: 0rem;
-  /* justify-content: center; */
 }
 
 
@@ -571,7 +539,6 @@ body {
   text-align: center;
 }
 
-/* Soft divider between media and content if images are transparent */
 .card-content::before {
   content: '';
   display: block;
@@ -594,28 +561,22 @@ body {
   letter-spacing: 0.2px;
 }
 
-/* Button inside cards: full-width and balanced spacing */
 .card .btn {
   width: 100%;
   margin-top: 0.875rem;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-/* Subtle focus/keyboard accessibility for cards */
 .card:focus-visible {
   outline: 3px solid rgba(109, 40, 217, 0.25);
   outline-offset: 2px;
 }
 
-/* Elevate button slightly when card is hovered for a cohesive feel */
 .card:hover .btn {
   transform: translateY(-1px);
   box-shadow: var(--shadow-md);
 }
 
-/* ==============================================
-   7. Forms (Contact, Login)
-   ============================================== */
 .form-input {
   width: 100%;
   padding: 0.75rem 1rem;
@@ -632,9 +593,6 @@ body {
   box-shadow: 0 0 0 3px rgba(109, 40, 217, 0.1);
 }
 
-/* ==============================================
-   8. Modal
-   ============================================== */
 .modal-overlay {
   position: fixed;
   inset: 0;
@@ -792,25 +750,17 @@ body {
   text-align: center;
 }
 
-/* ==============================================
-   9. Footer
-   ============================================== */
 .footer {
   text-align: center;
   padding: 2rem 5%;
   background-color: var(--text-primary);
   color: var(--background-light);
   font-size: 0.9rem;
-  margin-top: auto; /* Pushes footer to the bottom */
+  margin-top: auto; 
 }
 
-/* ==============================================
-   10. Mobile & Responsive Design
-   ============================================== */
-
-/* --- Mobile Hamburger Menu --- */
 .mobile-menu-button {
-  display: none; /* Hidden by default */
+  display: none;
   flex-direction: column;
   justify-content: space-around;
   width: 28px;
@@ -868,7 +818,6 @@ body {
   color: var(--primary-purple);
 }
 
-/* --- Media Queries --- */
 @media (max-width: 992px) {
   .hero-title {
     font-size: 2.75rem;
@@ -900,7 +849,6 @@ body {
   .account-type-cards {
     grid-template-columns: 1fr;
   }
-  /* For Contact page grid */
   .artists-section > div > div[style*="grid"] {
     grid-template-columns: 1fr !important;
   }
