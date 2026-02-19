@@ -156,6 +156,7 @@
   font-family: inherit;
   background: #ffffff;
   color: #334155;
+  border-radius: 999px;
 }
 
 .form-input:hover,

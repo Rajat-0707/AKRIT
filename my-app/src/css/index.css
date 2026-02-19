@@ -61,6 +61,7 @@ body {
   color: var(--primary-purple);
   text-decoration: none;
   transition: transform 0.2s ease;
+  display: flex;
 }
 
 .navbar-title:hover {
@@ -585,6 +586,7 @@ body {
   font-size: 1rem;
   font-family: inherit;
   transition: border-color 0.2s, box-shadow 0.2s;
+  border-radius: 999px;
 }
 
 .form-input:focus {
