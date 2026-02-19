@@ -59,7 +59,7 @@ const ContactUs = () => {
                                 placeholder="Your Message" 
                                 className="form-input" 
                                 rows="4"
-                                style={{ resize: 'vertical', minHeight: '100px' }}
+                                style={{ resize: 'vertical', minHeight: '100px',borderRadius: '10px'}}
                                 required
                               ></textarea>
                               <Button className="btn btn-purple btn-full" onclick={handleall}>Send Message</Button>
