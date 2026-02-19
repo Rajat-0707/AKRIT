@@ -6,7 +6,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { apiBase } from "../utils/api";
 import { authFetch } from "../utils/auth";
-import "./css/ArtistDashboard.css";
+import "../css/ArtistDashboard.css";
 
 export default function ArtistDashboard({ showLayout = true }) {
   const navigate = useNavigate();

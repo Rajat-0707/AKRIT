@@ -1,7 +1,7 @@
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { Link } from "react-router-dom";
-import "./css/auth.css";
+import "../css/auth.css";
 
 const AuthSelection = () => {
   return (

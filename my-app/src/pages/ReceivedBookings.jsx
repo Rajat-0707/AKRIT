@@ -6,7 +6,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { apiBase } from "../utils/api";
 import { authFetch, getUser } from "../utils/auth";
-import "./css/ReceivedBookings.css";
+import "../css/ReceivedBookings.css";
 
 export default function ReceivedBookings() {
   const navigate = useNavigate();

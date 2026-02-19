@@ -5,7 +5,7 @@ import Footer from "../components/Footer";
 import BookingModal from "../components/BookingModal";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import "./css/ArtistProfile.css";
+import "../css/ArtistProfile.css";
 import { apiBase, fetchJSON } from "../utils/api";
 import { getUser } from "../utils/auth";
 import { DEFAULT_AVATAR_SVG } from "../utils/avatar";

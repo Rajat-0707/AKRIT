@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { Button } from "../components/ui/button";
-import "./css/auth.css";
+import "../css/auth.css";
 import { setToken } from "../utils/auth";
 import { apiBase, fetchJSON } from "../utils/api";
 

@@ -3,7 +3,7 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { Button } from "../components/ui/button";
 import { Card, CardContent } from "../components/ui/card";
-import "./css/SearchArtists.css";
+import "../css/SearchArtists.css";
 import { apiBase, fetchJSON } from "../utils/api";
 import { DEFAULT_AVATAR_SVG } from "../utils/avatar";
 import { useNavigate } from "react-router-dom";
