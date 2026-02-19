@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { apiBase } from "../utils/api";
 import { DEFAULT_AVATAR_SVG } from "../utils/avatar";
 import { authFetch } from "../utils/auth";
-import "./css/BookingModal.css";
+import "../css/BookingModal.css";
 
 export default function BookingModal({ artist, onClose, onSuccess }) {
   const [form, setForm] = useState({
