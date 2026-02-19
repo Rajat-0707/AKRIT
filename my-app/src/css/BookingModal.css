@@ -159,6 +159,10 @@
   border-radius: 999px;
 }
 
+.form-textarea{
+    border-radius: 0px;
+  }
+
 .form-input:hover,
 .form-select:hover,
 .form-textarea:hover {
