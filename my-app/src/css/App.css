@@ -1,5 +1,5 @@
 
-@import '.css/card.css';
+@import './card.css';
 
 #root {
   display: flex;
