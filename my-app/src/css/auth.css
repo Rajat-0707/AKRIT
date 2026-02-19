@@ -1,11 +1,11 @@
-/* Auth pages professional styling */
+
 
 .auth-page {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   background: #ffffff;
-  color: #111827; /* gray-900 */
+  color: #111827; 
 }
 
 .auth-wrapper {
@@ -54,7 +54,7 @@
 }
 
 .auth-hero p {
-  color: #374151; /* gray-700 */
+  color: #374151;
   max-width: 48ch;
 }
 
@@ -78,7 +78,7 @@
 
 .auth-subtitle {
   margin-top: 6px;
-  color: #6b7280; /* gray-500 */
+  color: #6b7280; 
 }
 
 .login-form {
@@ -106,6 +106,7 @@
   color: #111827;
   outline: none;
   transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  border-radius: 999px;
 }
 
 .form-input::placeholder { color: #9ca3af; }

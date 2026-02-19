@@ -6,7 +6,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { apiBase } from "../utils/api";
 import { authFetch } from "../utils/auth";
-import "./ArtistDashboard.css";
+import "./css/ArtistDashboard.css";
 
 export default function ArtistDashboard({ showLayout = true }) {
   const navigate = useNavigate();
@@ -45,13 +45,11 @@ export default function ArtistDashboard({ showLayout = true }) {
           throw new Error("Invalid server response");
         }
         console.log("ArtistDashboard: Parsed data:", data);
-        // More robust error handling - don't fail if data structure is different
         if (res.status >= 400) {
           throw new Error(data.error || `HTTP ${res.status}: ${res.statusText}`);
         }
         if (!mounted) return;
 
-        // Handle different response formats gracefully
         const artistData = data.artist || data;
         setProfile(artistData || null);
         console.log("ArtistDashboard: Profile loaded:", artistData);

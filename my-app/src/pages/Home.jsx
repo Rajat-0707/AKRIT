@@ -21,12 +21,10 @@ const Home = () => {
     <div className="app-container">
       <Navbar />
 
-      {/* Show different layouts based on user role */}
       {user?.role === 'artist' ? (
         <>
           <Hero />
 
-          {/* Artist Dashboard - shown above FeaturedArtists for artists */}
           <section id="artist-dashboard" className="hero-section">
             <ArtistDashboard showLayout={false} />
           </section>
@@ -38,11 +36,9 @@ const Home = () => {
           <div id="contact"><ContactUs /></div>
         </>
       ) : (
-        /* Client Layout: Hero, Find Artist, Featured Artists, About Us, Contact */
         <>
           <Hero />
 
-          {/* Find Artists Section for Logged-in Clients */}
           {user && (
             <>
               <div className="partitioner"><hr /></div>

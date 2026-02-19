@@ -5,7 +5,7 @@ import Footer from "../components/Footer";
 import BookingModal from "../components/BookingModal";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import "./ArtistProfile.css";
+import "./css/ArtistProfile.css";
 import { apiBase, fetchJSON } from "../utils/api";
 import { getUser } from "../utils/auth";
 import { DEFAULT_AVATAR_SVG } from "../utils/avatar";
@@ -29,12 +29,11 @@ export default function ArtistProfile() {
 
   useEffect(() => {
     let mounted = true;
-    if (artist) return; // already provided via navigation state
+    if (artist) return; 
     (async () => {
       setLoading(true);
       setError("");
       try {
-        // Fallback: fetch a reasonable batch and find by id client-side
         const data = await fetchJSON(`${apiBase()}/api/artists?limit=200`);
         const items = Array.isArray(data.items) ? data.items : [];
         const found = items.find((a) => String(a.id) === String(id));

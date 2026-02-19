@@ -3,7 +3,7 @@ import { Button } from "../components/ui/button";
 import { Card, CardContent } from "../components/ui/card";
 import { useNavigate } from "react-router-dom";
 import { apiBase, fetchJSON } from "../utils/api";
-import "./FindArtists.css";
+import "./css/FindArtists.css";
 
 const categories = [
   { id: "singer", name: "Vocalists" },

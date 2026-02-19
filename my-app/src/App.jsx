@@ -13,17 +13,15 @@ import ArtistProfile from "./pages/ArtistProfile";
 import ArtistDashboard from "./pages/ArtistDashboard";
 import MyRequests from "./pages/MyRequests";
 import ReceivedBookings from "./pages/ReceivedBookings";
-import "./App.css";
+import "./css/App.css";
 import { getToken, clearToken } from "./utils/auth";
 
 const App = () => {
-  // ✅ NEW: auth hydration flag
   const [authChecked, setAuthChecked] = useState(false);
 
   useEffect(() => {
     const token = getToken();
 
-    // No token → auth resolved
     if (!token) {
       setAuthChecked(true);
       return;
@@ -46,14 +44,10 @@ const App = () => {
         } catch {}
       })
       .finally(() => {
-        // ✅ auth finished (success or fail)
         setAuthChecked(true);
       });
   }, []);
-
-  // 🚨 BLOCK rendering until auth is ready
   if (!authChecked) {
-    return null; // or loader if you want
   }
 
   return (

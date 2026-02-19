@@ -1,7 +1,7 @@
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { Button } from "../components/ui/button";
-import "./auth.css";
+import "./css/auth.css";
 import { useNavigate } from "react-router-dom";
 import { apiBase, fetchJSON } from "../utils/api";
 

@@ -3,7 +3,7 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { Button } from "../components/ui/button";
 import { Card, CardContent } from "../components/ui/card";
-import "./SearchArtists.css";
+import "./css/SearchArtists.css";
 import { apiBase, fetchJSON } from "../utils/api";
 import { DEFAULT_AVATAR_SVG } from "../utils/avatar";
 import { useNavigate } from "react-router-dom";
@@ -29,7 +29,6 @@ const SearchArtists = () => {
   const [showFilters, setShowFilters] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  // Check authentication status
   useEffect(() => {
     const token = getToken();
     setIsLoggedIn(!!token);
@@ -72,7 +71,6 @@ const SearchArtists = () => {
 
   const handleSearchSubmit = (e) => {
     e.preventDefault();
-    // Search is handled by useEffect, no need for additional logic
   };
 
   return (
@@ -90,7 +88,6 @@ const SearchArtists = () => {
           </p>
         </header>
 
-        {/* Search and Filters Section for Logged-in Consumers */}
         {isLoggedIn && (
           <section className="search-and-filters">
             <div className="search-container">
@@ -115,7 +112,6 @@ const SearchArtists = () => {
               </form>
             </div>
 
-            {/* Collapsible Filters Section */}
             {showFilters && (
               <div className="filters-container-inline">
                 <select
@@ -166,7 +162,6 @@ const SearchArtists = () => {
           </section>
         )}
 
-        {/* Filter Toggle for Non-logged-in Users */}
         {!isLoggedIn && (
           <section className="filter-controls">
             <Button

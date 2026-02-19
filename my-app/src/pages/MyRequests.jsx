@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 import { apiBase } from "../utils/api";
 import { DEFAULT_AVATAR_SVG } from "../utils/avatar";
 import { authFetch, getUser } from "../utils/auth";
-import "./MyRequests.css";
+import "./css/MyRequests.css";
 
 export default function MyRequests() {
   const navigate = useNavigate();
