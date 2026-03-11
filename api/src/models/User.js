@@ -6,7 +6,7 @@ const UserSchema = new mongoose.Schema(
     name: { type: String },
     email: { type: String, required: true, unique: true, index: true },
     phone: { type: String },
-    category: { type: String }, // service
+    category: { type: String },  
     city: { type: String },
     portfolio_url: { type: String },
     business_type: { type: String },

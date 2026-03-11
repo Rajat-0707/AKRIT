@@ -87,7 +87,6 @@ export default function ServicePage() {
 
   return (
     <div className="service-page">
-      {/* Back Navigation */}
       <div className="back-nav">
         <div className="container">
           <Link to="/" className="back-link">
@@ -99,7 +98,6 @@ export default function ServicePage() {
         </div>
       </div>
 
-      {/* Hero Section */}
       {/* <section className={`service-hero ${service.color}`}>
         <div className="container">
           <div className="hero-content">
@@ -116,7 +114,6 @@ export default function ServicePage() {
         </div>
       </section> */}
 
-      {/* Main Content */}
       <main className="service-main">
         <div className="container">
           <div className="content-header">
@@ -256,7 +253,6 @@ export default function ServicePage() {
                     ))}
                   </div>
 
-                  {/* Load More Button */}
                   <div className="load-more-container">
                     <Button className="load-more-btn">
                       Load More Artists

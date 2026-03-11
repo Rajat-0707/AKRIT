@@ -24,7 +24,6 @@ export default function ReceivedBookings() {
       return;
     }
     fetchBookings();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const fetchBookings = async () => {

@@ -1,4 +1,4 @@
-// Neutral avatar: dark circular background with light silhouette (from user-provided reference)
+
 export const DEFAULT_AVATAR_SVG = `data:image/svg+xml;utf8,
 <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 128 128'>
   <circle cx='64' cy='64' r='64' fill='%234b5563'/>

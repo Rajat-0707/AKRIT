@@ -13,7 +13,7 @@ export function authRequired(req, res, next) {
   const token = m[1];
   try {
     const decoded = jwt.verify(token, JWT_SECRET, { algorithms: ['HS256'] });
-    req.user = decoded; // contains sub, email, role, name
+    req.user = decoded;  
     next();
   } catch (e) {
     return res.status(401).json({ success: false, error: 'Invalid or expired token' });

@@ -1,13 +1,13 @@
 export function apiBase() {
-  // Vite → exposed to browser
+  
   const envBase = import.meta.env.VITE_API_BASE_URL;
 
-  // If env is set (production), always use it
+
   if (envBase) {
-    return envBase.replace(/\/$/, ''); // trim trailing slash
+    return envBase.replace(/\/$/, ''); 
   }
 
-  // Local fallback
+
   return 'http://localhost:4000';
 }
 

@@ -61,8 +61,7 @@
 .kv-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.5rem; }
 .kv-list li { display: flex; align-items: center; justify-content: space-between; border-bottom: 1px dashed var(--profile-border); padding: 0.25rem 0; }
 .kv-list li span { color: var(--profile-muted); }
-
-/* Success Toast */
+ 
 .success-toast {
   position: fixed;
   top: 2rem;

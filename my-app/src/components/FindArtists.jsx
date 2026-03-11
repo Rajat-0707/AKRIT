@@ -61,7 +61,6 @@ const FindArtists = () => {
 
   const handleSearchSubmit = (e) => {
     e.preventDefault();
-    // Search is handled by useEffect, no need for additional logic
   };
 
   return (

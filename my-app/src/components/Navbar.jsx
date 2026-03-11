@@ -20,7 +20,6 @@ const Navbar = () => {
     { id: "teacher", name: "Vocal Coaches", description: "Professional training services" }
   ];
 
-  // Helper to synchronize auth state from localStorage
   const syncAuth = () => {
     const token = getToken();
     const userRaw = (() => { try { return localStorage.getItem("ac_user"); } catch { return null; } })();
@@ -39,8 +38,7 @@ const Navbar = () => {
       setUserRole("");
     }
   };
-
-  // Load auth state on mount and when storage changes (cross-tab)
+ 
   useEffect(() => {
     syncAuth();
     const onStorage = (e) => {
@@ -51,8 +49,7 @@ const Navbar = () => {
     window.addEventListener("storage", onStorage);
     return () => window.removeEventListener("storage", onStorage);
   }, []);
-
-  // Also resync on route changes (same-tab login flow)
+ 
   useEffect(() => {
     syncAuth();
   }, [location.pathname]);
@@ -138,8 +135,7 @@ const Navbar = () => {
             </Link>
           </>
         )}
-
-        {/* About Us and Contact Us for all users */}
+ 
         {isHome ? (
           <>
             <a
@@ -290,7 +286,7 @@ const Navbar = () => {
             <Link className="mobile-nav-item" to="/" onClick={() => setShowMobileMenu(false)}>Home</Link>
           )}
           <Link className="mobile-nav-item" to="/services/singer" onClick={() => setShowMobileMenu(false)} style={{ display: isAuthed && userRole === 'artist' ? 'none' : 'block' }}>Services</Link>
-          {/* About Us and Contact Us for all users in mobile */}
+ 
           <button
             className="mobile-nav-item"
             onClick={() => {

@@ -54,8 +54,7 @@ const BookingRequestSchema = new mongoose.Schema(
   },
   { timestamps: true }
 );
-
-// Compound index for efficient queries
+ 
 BookingRequestSchema.index({ client_id: 1, createdAt: -1 });
 BookingRequestSchema.index({ artist_id: 1, createdAt: -1 });
 

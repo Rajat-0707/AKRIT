@@ -3,9 +3,7 @@ import User from '../models/User.js';
 import ArtistProfile from '../models/ArtistProfile.js';
 
 const router = express.Router();
-
-// GET /api/artists
-// Query params: q, service, location, minBudget, maxBudget, limit, offset
+ 
 router.get('/artists', async (req, res) => {
   try {
     const q = (req.query.q || '').trim();
@@ -15,8 +13,7 @@ router.get('/artists', async (req, res) => {
     const maxBudget = req.query.maxBudget !== undefined ? Number(req.query.maxBudget) : undefined;
     const limit = Math.max(1, Math.min(100, Number(req.query.limit) || 50));
     const offset = Math.max(0, Number(req.query.offset) || 0);
-
-    // Build base user filter
+ 
     const userMatch = { role: 'artist' };
     if (q) {
       userMatch.$or = [
@@ -30,8 +27,7 @@ router.get('/artists', async (req, res) => {
     if (location) {
       userMatch.city = { $regex: location, $options: 'i' };
     }
-
-    // Aggregate to left join artist profile
+ 
     const pipeline = [
       { $match: userMatch },
       {
@@ -44,8 +40,7 @@ router.get('/artists', async (req, res) => {
       },
       { $unwind: { path: '$profile', preserveNullAndEmptyArrays: true } },
     ];
-
-    // Apply budget filters if provided
+ 
     if (minBudget !== undefined) {
       pipeline.push({
         $match: {

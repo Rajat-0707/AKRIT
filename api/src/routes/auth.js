@@ -6,13 +6,11 @@ import { authRequired, signToken } from '../middleware/auth.js';
 import { upload, getImageUrl } from '../middleware/upload.js';
 
 const router = express.Router();
-
-// POST /api/register
+ 
 router.post('/register', upload, async (req, res) => {
   try {
     const { role, email, password } = req.body || {};
-
-    // Ensure role is properly extracted from FormData or JSON
+ 
     const userRole = role || (req.body.role ? String(req.body.role).trim() : '');
 
     if (!['artist', 'client'].includes(userRole)) {
@@ -50,8 +48,7 @@ router.post('/register', upload, async (req, res) => {
     };
 
     const user = await User.create(userData);
-
-    // If it's an artist registration and a photo was uploaded, create artist profile with image URL
+ 
     if (userRole === 'artist' && req.files && req.files.photo && req.files.photo.length > 0) {
       const imageUrl = getImageUrl(req.files.photo[0].filename);
       console.log('Creating ArtistProfile with image URL:', imageUrl);
@@ -71,7 +68,7 @@ router.post('/register', upload, async (req, res) => {
           email: user.email,
           name: user.name || null,
         },
-        img: imageUrl, // Include the image URL in response
+        img: imageUrl,  
       });
     }
 
@@ -89,8 +86,7 @@ router.post('/register', upload, async (req, res) => {
     return res.status(500).json({ success: false, error: 'Failed to register' });
   }
 });
-
-// POST /api/login
+ 
 router.post('/login', async (req, res) => {
   try {
     const { email, password, role } = req.body || {};
@@ -126,8 +122,7 @@ router.post('/login', async (req, res) => {
     return res.status(500).json({ success: false, error: 'DB error' });
   }
 });
-
-// GET /api/me
+ 
 router.get('/me', authRequired, async (req, res) => {
   try {
     const userId = req.user?.sub;

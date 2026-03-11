@@ -15,8 +15,7 @@
   color: #1f2937;
   margin-bottom: 1rem;
 }
-
-/* About Us Section for Logged-in Clients */
+ 
 .about-us-section {
   background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
   padding: 3rem 2rem;
@@ -76,8 +75,7 @@
   color: #64748b;
   line-height: 1.6;
 }
-
-/* Enhanced Search Bar for Logged-in Users */
+ 
 .enhanced-search {
   margin-bottom: 1.5rem;
 }
@@ -118,8 +116,7 @@
   cursor: pointer;
   transition: background-color 0.2s ease;
 }
-
-/* Search and Filters Section for Logged-in Consumers */
+ 
 .search-and-filters {
   background: #faf7ff;
   padding: 1.5rem;
@@ -235,8 +232,7 @@
   padding: 0.75rem 1rem;
   font-size: 0.875rem;
 }
-
-/* Filter Controls */
+ 
 .filter-controls {
   display: flex;
   justify-content: center;
@@ -264,8 +260,7 @@
   color: white;
   border-color: #4f46e5;
 }
-
-/* Filters Section */
+ 
 .filters {
   background: #faf7ff;
   padding: 1.5rem;
@@ -295,8 +290,7 @@
   gap: 0.5rem;
   justify-content: flex-end;
 }
-
-/* Results Section */
+ 
 .results {
   margin-top: 1rem;
 }
@@ -361,10 +355,10 @@
 .card-image {
   width: 100%;
   height: 200px;
-  object-fit: contain; /* show full placeholder/avatar images */
+  object-fit: contain;  
   object-position: center;
-  background: #f8fafc; /* soft background behind transparent areas */
-  padding: 8px; /* space so image doesn't touch edges when contained */
+  background: #f8fafc;  
+  padding: 8px;  
 }
 
 .card-content {
@@ -390,8 +384,7 @@
   margin-bottom: 1rem;
   line-height: 1.5;
 }
-
-/* Mobile Responsive Design */
+ 
 @media (max-width: 768px) {
   .search-page {
     padding: 1rem 0.5rem;

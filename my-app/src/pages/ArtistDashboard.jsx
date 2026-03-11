@@ -613,7 +613,7 @@ export default function ArtistDashboard({ showLayout = true }) {
                         setSaving(true);
                         try {
                           if (form.newPhoto && form.newPhoto.size > 0) {
-                            // Use FormData for file upload
+                           
                             const formData = new FormData();
                             formData.append("name", form.name);
                             formData.append("city", form.city);
@@ -737,7 +737,6 @@ export default function ArtistDashboard({ showLayout = true }) {
         </>
       )}
 
-      {/* Toasts */}
       <div className="toast-container">
         {toasts.map(t => (
           <div key={t.id} className={`toast toast-${t.type}`} onClick={() => setToasts(ts => ts.filter(x => x.id !== t.id))}>

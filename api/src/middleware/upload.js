@@ -5,8 +5,7 @@ import { fileURLToPath } from 'url';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-
-// Ensure uploads directory exists
+ 
 const uploadsDir = path.join(__dirname, '..', '..', 'uploads');
 const imagesDir = path.join(uploadsDir, 'images');
 
@@ -16,21 +15,18 @@ if (!fs.existsSync(uploadsDir)) {
 if (!fs.existsSync(imagesDir)) {
   fs.mkdirSync(imagesDir, { recursive: true });
 }
-
-// Configure multer storage
+ 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
     cb(null, imagesDir);
   },
-  filename: function (req, file, cb) {
-    // Generate unique filename with timestamp and random string
+  filename: function (req, file, cb) { 
     const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
     const extension = path.extname(file.originalname);
     cb(null, `artist-${uniqueSuffix}${extension}`);
   }
 });
-
-// File filter for images only
+ 
 const fileFilter = (req, file, cb) => {
   if (file.mimetype.startsWith('image/')) {
     cb(null, true);
@@ -38,17 +34,15 @@ const fileFilter = (req, file, cb) => {
     cb(new Error('Only image files are allowed!'), false);
   }
 };
-
-// Configure multer
+ 
 export const upload = multer({
   storage: storage,
   fileFilter: fileFilter,
   limits: {
-    fileSize: 5 * 1024 * 1024, // 5MB limit
+    fileSize: 5 * 1024 * 1024,  
   }
 }).fields([
-  { name: 'photo', maxCount: 1 },
-  // Allow all other fields
+  { name: 'photo', maxCount: 1 }, 
   { name: 'role' },
   { name: 'name' },
   { name: 'email' },
@@ -63,8 +57,7 @@ export const upload = multer({
   { name: 'postal_code' },
   { name: 'country' },
 ]);
-
-// Middleware to handle file upload errors
+ 
 export const handleUploadError = (error, req, res, next) => {
   if (error instanceof multer.MulterError) {
     if (error.code === 'LIMIT_FILE_SIZE') {
@@ -76,8 +69,7 @@ export const handleUploadError = (error, req, res, next) => {
   }
   next(error);
 };
-
-// Helper function to generate public URL for uploaded files
+ 
 export const getImageUrl = (filename) => {
   if (!filename) return null;
   const port = process.env.PORT || 4000;

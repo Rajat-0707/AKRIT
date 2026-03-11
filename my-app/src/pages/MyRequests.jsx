@@ -23,7 +23,6 @@ export default function MyRequests() {
       return;
     }
     fetchBookings();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const fetchBookings = async () => {
@@ -62,7 +61,6 @@ export default function MyRequests() {
         throw new Error(data.error || "Failed to cancel booking");
       }
 
-      // Refresh bookings
       fetchBookings();
     } catch (err) {
       console.error("Error cancelling booking:", err);

@@ -1,14 +1,9 @@
-/* ===============================================
-   SERVICE PAGE STYLES
-   =============================================== */
-
-/* Reset and Base Styles */
-.service-page {
-  /* min-height: 100vh; */
+ 
+ 
+.service-page { 
   background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%);
 }
-
-/* Container */
+ 
 .container {
   max-width: 1200px;
   margin: 0 auto;
@@ -20,11 +15,7 @@
     padding: 0 2rem;
   }
 }
-
-/* ===============================================
-   BACK NAVIGATION
-   =============================================== */
-
+ 
 .back-nav {
   background: white;
   border-bottom: 1px solid #e2e8f0;
@@ -55,10 +46,7 @@
   width: 1.25rem;
   height: 1.25rem;
 }
-
-/* ===============================================
-   HERO SECTION
-   =============================================== */
+ 
 
 .service-hero {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -132,16 +120,12 @@
   font-size: 0.875rem;
   opacity: 0.8;
 }
-
-/* ===============================================
-   MAIN CONTENT
-   =============================================== */
+ 
 
 .service-main {
   padding: 3rem 0;
 }
-
-/* Content Header */
+ 
 .content-header {
   display: flex;
   justify-content: space-between;
@@ -161,8 +145,7 @@
   color: #64748b;
   font-size: 1.125rem;
 }
-
-/* Sort Controls */
+ 
 .sort-controls {
   display: flex;
   align-items: center;
@@ -193,10 +176,7 @@
   border-color: #4f46e5;
   box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
 }
-
-/* ===============================================
-   LOADING & ERROR STATES
-   =============================================== */
+ 
 
 .loading-state {
   display: flex;
@@ -226,8 +206,7 @@
   color: #6b7280;
   font-size: 1.125rem;
 }
-
-/* Error State */
+ 
 .error-state {
   display: flex;
   flex-direction: column;
@@ -255,8 +234,7 @@
   color: #7f1d1d;
   margin-bottom: 2rem;
 }
-
-/* Empty State */
+ 
 .empty-state {
   display: flex;
   flex-direction: column;
@@ -285,10 +263,7 @@
   max-width: 400px;
   line-height: 1.6;
 }
-
-/* ===============================================
-   ARTISTS GRID & CARDS
-   =============================================== */
+ 
 
 .artists-grid {
   display: grid;
@@ -313,8 +288,7 @@ height: auto;
   transform: translateY(-4px);
   box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
 }
-
-/* Card Image Container */
+ 
 .card-image-container {
   position: relative;
   overflow: hidden;
@@ -332,8 +306,7 @@ height: auto;
 .artist-card:hover .artist-image {
   transform: scale(1.05);
 }
-
-/* Card Overlay */
+ 
 .card-overlay {
   position: absolute;
   inset: 0;
@@ -365,13 +338,11 @@ height: auto;
   background: white;
   transform: translateY(-2px);
 }
-
-/* Card Content */
+ 
 .card-content {
   padding: 1.5rem;
 }
-
-/* Artist Header */
+ 
 .artist-header {
   display: flex;
   justify-content: space-between;
@@ -416,8 +387,7 @@ height: auto;
   background-color: #fef2f2;
   color: #dc2626;
 }
-
-/* Artist Location */
+ 
 .artist-location {
   color: #6b7280;
   font-size: 0.875rem;
@@ -426,8 +396,7 @@ height: auto;
   align-items: center;
   gap: 0.25rem;
 }
-
-/* Pricing Section */
+ 
 .pricing-section {
   background: #f8fafc;
   padding: 1rem;
@@ -449,8 +418,7 @@ height: auto;
   font-weight: 700;
   color: #059669;
 }
-
-/* Rating Section */
+ 
 .rating-section {
   margin-bottom: 1.5rem;
 }
@@ -466,8 +434,7 @@ height: auto;
   font-size: 0.75rem;
   color: #6b7280;
 }
-
-/* Card Actions */
+ 
 .card-actions {
   display: flex;
   gap: 0.75rem;
@@ -508,10 +475,7 @@ height: auto;
   background: #4338ca;
   transform: translateY(-1px);
 }
-
-/* ===============================================
-   LOAD MORE BUTTON
-   =============================================== */
+ 
 
 .load-more-container {
   display: flex;
@@ -535,10 +499,7 @@ height: auto;
   background: #4338ca;
   transform: translateY(-2px);
 }
-
-/* ===============================================
-   SERVICE NOT FOUND
-   =============================================== */
+ 
 
 .service-not-found {
   min-height: 100vh;
@@ -561,25 +522,19 @@ height: auto;
   opacity: 0.9;
 }
 
-/* ===============================================
-   RESPONSIVE DESIGN
-   =============================================== */
-
-/* Large Desktop */
+ 
 @media (min-width: 1280px) {
   .artists-grid {
     grid-template-columns: repeat(3, 1fr);
   }
 }
-
-/* Desktop */
+ 
 @media (max-width: 1279px) {
   .artists-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
-
-/* Tablet */
+ 
 @media (max-width: 768px) {
   .service-hero {
     padding: 3rem 0;
@@ -626,8 +581,7 @@ height: auto;
     flex-direction: column;
   }
 }
-
-/* Mobile */
+ 
 @media (max-width: 640px) {
   .container {
     padding: 0 1rem;
@@ -692,8 +646,7 @@ height: auto;
     font-size: 0.875rem;
   }
 }
-
-/* Small Mobile */
+ 
 @media (max-width: 480px) {
   .service-hero h1 {
     font-size: 1.5rem;

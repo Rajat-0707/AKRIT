@@ -1,10 +1,8 @@
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
-
-// Load environment variables
+ 
 dotenv.config();
-
-// Connect to MongoDB
+ 
 async function connectDB() {
   try {
     const mongoUri = process.env.MONGODB_URI || 'mongodb://localhost:27017/su1';
@@ -15,22 +13,18 @@ async function connectDB() {
     process.exit(1);
   }
 }
-
-// Check if image URLs are stored in the database
+ 
 async function checkImageStorage() {
-  try {
-    // Import models after connection
+  try { 
     const User = (await import('../models/User.js')).default;
     const ArtistProfile = (await import('../models/ArtistProfile.js')).default;
 
     console.log('Checking for artists with profile images...');
-
-    // Find all users with artist role
+ 
     const artists = await User.find({ role: 'artist' }).lean();
     console.log(`Found ${artists.length} artists`);
 
-    for (const artist of artists) {
-      // Find their profile
+    for (const artist of artists) { 
       const profile = await ArtistProfile.findOne({ user_id: artist._id }).lean();
 
       if (profile && profile.img_url) {
@@ -54,6 +48,5 @@ async function checkImageStorage() {
     console.log('Database connection closed');
   }
 }
-
-// Run the check
+ 
 connectDB().then(() => checkImageStorage());

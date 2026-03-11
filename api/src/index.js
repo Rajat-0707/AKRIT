@@ -33,24 +33,20 @@ app.use(cors({
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 app.use('/uploads', express.static(path.join(__dirname, '..', 'uploads')));
-
-// Parse JSON and form data
+ 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(morgan('dev'));
-
-// Health endpoint
+ 
 app.get('/api/health', (req, res) => {
   res.json({ success: true, status: 'ok' });
 });
-
-// Routes
+ 
 app.use('/api', authRoutes);
 app.use('/api', artistsRoutes);
 app.use('/api', artistRoutes);
 app.use('/api', bookingsRoutes);
-
-// Error handling middleware for uploads
+ 
 app.use(handleUploadError);
 
 const PORT = process.env.PORT || 4000;

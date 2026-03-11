@@ -5,8 +5,7 @@ import { authRequired } from '../middleware/auth.js';
 import { upload, getImageUrl } from '../middleware/upload.js';
 
 const router = express.Router();
-
-// GET /api/artist/me - Only for artist role
+ 
 router.get('/artist/me', authRequired, async (req, res) => {
   try {
     const userId = req.user?.sub;
@@ -38,8 +37,7 @@ router.get('/artist/me', authRequired, async (req, res) => {
     return res.status(500).json({ success: false, error: 'DB error' });
   }
 });
-
-// POST /api/artist/update - Update artist and profile
+ 
 router.post('/artist/update', authRequired, upload, async (req, res) => {
   try {
     const userId = req.user?.sub;
@@ -81,8 +79,7 @@ router.post('/artist/update', authRequired, upload, async (req, res) => {
       }
       updateProfile.availability_status = v;
     }
-
-    // Transaction-like sequence; Mongo single ops are atomic per document
+ 
     if (Object.keys(updateUser).length > 0) {
       await User.updateOne({ _id: userId }, { $set: updateUser });
     }
@@ -96,8 +93,7 @@ router.post('/artist/update', authRequired, upload, async (req, res) => {
       );
       console.log('ArtistProfile updated successfully');
     }
-
-    // Return the updated image URL if a new photo was uploaded
+ 
     const response = { success: true };
     if (req.files && req.files.photo && req.files.photo.length > 0) {
       response.img = getImageUrl(req.files.photo[0].filename);

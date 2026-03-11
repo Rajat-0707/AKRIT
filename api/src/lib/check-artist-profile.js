@@ -1,10 +1,8 @@
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
-
-// Load environment variables
+ 
 dotenv.config();
-
-// Connect to MongoDB
+ 
 async function connectDB() {
   try {
     const mongoUri = process.env.MONGODB_URI || 'mongodb://localhost:27017/su1';
@@ -14,18 +12,14 @@ async function connectDB() {
     console.error('MongoDB connection error:', error);
     process.exit(1);
   }
-}
-
-// Check artist profile data
+} 
 async function checkArtistProfiles() {
-  try {
-    // Import models after connection
+  try { 
     const User = (await import('../models/User.js')).default;
     const ArtistProfile = (await import('../models/ArtistProfile.js')).default;
 
     console.log('Checking artist profiles...');
-
-    // Find all users with artist role
+ 
     const artists = await User.find({ role: 'artist' }).lean();
     console.log(`Found ${artists.length} artists`);
 
@@ -33,8 +27,7 @@ async function checkArtistProfiles() {
       console.log(`\n--- Artist: ${artist.name || artist.email} ---`);
       console.log(`User ID: ${artist._id}`);
       console.log(`Email: ${artist.email}`);
-
-      // Find their profile
+ 
       const profile = await ArtistProfile.findOne({ user_id: artist._id }).lean();
 
       if (profile) {
@@ -59,6 +52,5 @@ async function checkArtistProfiles() {
     console.log('Database connection closed');
   }
 }
-
-// Run the check
+ 
 connectDB().then(() => checkArtistProfiles());

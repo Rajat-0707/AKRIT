@@ -139,8 +139,7 @@
   padding: 0.75rem 1rem;
   font-size: 0.875rem;
 }
-
-/* Results Section */
+ 
 .results {
   margin-top: 1rem;
 }
@@ -231,8 +230,7 @@
   margin-bottom: 1rem;
   line-height: 1.5;
 }
-
-/* Mobile Responsive Design */
+ 
 @media (max-width: 768px) {
   .find-artists-section {
     padding: 1rem 0.5rem;

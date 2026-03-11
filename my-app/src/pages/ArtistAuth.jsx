@@ -114,7 +114,7 @@ const ArtistAuth = () => {
             </div>
 
             <Button className="btn btn-purple btn-full" type="submit">Create Account</Button>
-            <div className="helper-text">We’ll never share your information without permission.</div>
+            <div className="helper-text">We'll never share your information without permission.</div>
           </form>
         </section>
       </div>
