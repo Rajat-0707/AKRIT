@@ -55,7 +55,7 @@ const FeaturedArtists = () => {
                        className="card-image" />
                   <CardContent className="card-content" id="feat">
                     <h3 className="card-title">{artist.name}</h3>
-                    {artist.role && <p className="card-role">{artist.role}</p>}
+                    {artist.role && <p className="card-role">{artist.service}</p>}
                     <Button
                       className="btn btn-purple btn-full"
                       onClick={() => navigate(`/artists/${artist.id}`, { state: { artist } })}
