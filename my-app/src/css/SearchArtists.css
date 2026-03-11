@@ -332,6 +332,7 @@
   height: auto;
   width: 18rem;
   transition: transform 0.2s ease;
+  border-radius: 40px;
 }
 
 .artist-card:hover {
