@@ -668,7 +668,7 @@ export default function ArtistDashboard({ showLayout = true }) {
                       </label>
                     </div>
                     <div className="panel-actions">
-                      <Button variant="outline" onClick={() => { setShowEditRates(false); showToast('info','Edit cancelled'); }}>Cancel</Button>
+                      <Button variant="outline" className="btn btn-secondary"onClick={() => { setShowEditRates(false); showToast('info','Edit cancelled'); }}>Cancel</Button>
                       <Button className="btn btn-purple" disabled={saving} onClick={async()=>{
                         setSaving(true);
                         try {
@@ -712,7 +712,7 @@ export default function ArtistDashboard({ showLayout = true }) {
                       </label>
                     </div>
                     <div className="panel-actions">
-                      <Button variant="outline" onClick={() => { setShowEditAvailability(false); showToast('info','Edit cancelled'); }}>Cancel</Button>
+                      <Button variant="outline" className="btn btn-secondary" onClick={() => { setShowEditAvailability(false); showToast('info','Edit cancelled'); }}>Cancel</Button>
                       <Button className="btn btn-purple" disabled={saving} onClick={async()=>{
                         setSaving(true);
                         try {
