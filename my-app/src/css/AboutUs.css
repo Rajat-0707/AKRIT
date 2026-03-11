@@ -111,3 +111,14 @@
   }
 }
 
+@media (max-width: 768px) {
+  .aboutus-badge{
+    top: 0.5rem;
+    right: 0.5rem;
+    font-size: 0.875rem;
+  }
+  .badge-sub{
+    font-size: 0.5rem;
+  }
+  }
+
