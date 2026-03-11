@@ -556,7 +556,6 @@ export default function ArtistDashboard({ showLayout = true }) {
         )}
       </main>
 
-      {/* Edit Modals */}
       {!loading && !error && (
         <>
           {showEditProfile && (
@@ -608,7 +607,7 @@ export default function ArtistDashboard({ showLayout = true }) {
                       </label>
                     </div>
                     <div className="panel-actions">
-                      <Button variant="outline" onClick={() => { setShowEditProfile(false); showToast('info','Edit cancelled'); }}>Cancel</Button>
+                      <Button variant="outline" className="btn btn-secondary"onClick={() => { setShowEditProfile(false); showToast('info','Edit cancelled'); }}>Cancel</Button>
                       <Button className="btn btn-purple" disabled={saving} onClick={async()=>{
                         setSaving(true);
                         try {
@@ -630,7 +629,6 @@ export default function ArtistDashboard({ showLayout = true }) {
                             if (!res.ok || data.success === false) throw new Error(data.error || `Failed (${res.status})`);
                             setProfile(p=>({ ...(p||{}), name: form.name, city: form.city, service: form.service, bio: form.bio, img: data.img || form.img }));
                           } else {
-                            // Use JSON for regular updates
                             const res = await authFetch(`${apiBase()}/api/artist/update`, { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ name: form.name, city: form.city, service: form.service, bio: form.bio, img: form.img }) });
                             const data = await res.json();
                             if (!res.ok || data.success === false) throw new Error(data.error || `Failed (${res.status})`);
