@@ -10,7 +10,7 @@
 .profile-page {
   padding: 2rem 1rem;
   max-width: var(--profile-max);
-  margin: 0 auto;
+  margin: 1rem 25rem;
 }
 
 .breadcrumbs {

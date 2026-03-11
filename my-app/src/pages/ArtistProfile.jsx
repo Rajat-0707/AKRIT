@@ -117,7 +117,7 @@ export default function ArtistProfile() {
                 >
                   Request Booking
                 </Button>
-                <Button variant="outline" onClick={() => navigate(-1)}>Back</Button>
+                <Button variant="outline" className="btn btn-secondary" Click={() => navigate(-1)}>Back</Button>
               </div>
             </div>
           </section>

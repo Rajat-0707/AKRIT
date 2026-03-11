@@ -174,8 +174,7 @@ const SearchArtists = () => {
           </section>
         )}
 
-        {/* Collapsible Filters Section */}
-        {/* {showFilters && (
+        {showFilters && (
           <section className="filters">
             {!isLoggedIn && (
               <div className="search-row">
@@ -237,7 +236,7 @@ const SearchArtists = () => {
               </Button>
             </div>
           </section>
-        )} */}
+        )}
 
         <section className="results">
           <div className="results-meta">
