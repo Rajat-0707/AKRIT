@@ -26,7 +26,7 @@ const Hero = () => {
         {!user ? (
           <>
             <Link to="/auth">
-              <Button size="lg" className="btn-btn-lg">Find Artist</Button>
+              <Button size="lg" className="btn-btn-ghost btn-lg">Find Artist</Button>
             </Link>
             <Link to="/auth/artist">
               <Button size="lg" className="btn-btn-ghost btn-lg">Join as Artist</Button>
