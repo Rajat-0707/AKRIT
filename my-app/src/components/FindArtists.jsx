@@ -169,7 +169,7 @@ const FindArtists = () => {
                 <div key={artist.id} className="artist-card">
                   <Card className="card">
                     <img
-                      src={artist.img || `https://source.unsplash.com/200x200/?artist`}
+                      src={artist.img || "/avt.png"}
                       alt={artist.name}
                       className="card-image"
                     />
