@@ -508,6 +508,30 @@ body {
   margin: 0 auto;
 }
 
+@media (max-width: 768px) {
+  .artists-grid {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: var(--space-4);
+    padding-bottom: var(--space-4);
+    margin-left: -5%;
+    margin-right: -5%;
+    padding-left: 5%;
+    padding-right: 5%;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .artists-grid::-webkit-scrollbar {
+    display: none;
+  }
+  .artists-grid > * {
+    min-width: 85%;
+    scroll-snap-align: center;
+    flex-shrink: 0;
+  }
+}
+
 /* =======================================
    Modals
 ======================================= */
@@ -620,6 +644,12 @@ body {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: var(--space-4);
+}
+
+@media (max-width: 768px) {
+  .account-type-cards {
+    grid-template-columns: 1fr;
+  }
 }
 
 .account-type-card {

@@ -242,8 +242,7 @@ const Navbar = () => {
         <span className={`hamburger-line ${showMobileMenu ? "active" : ""}`}></span>
       </button>
 
-      {showMobileMenu && (
-        <div className="mobile-menu">
+      <div className={`mobile-menu ${showMobileMenu ? "active" : ""}`}>
           {isAuthed ? (
             <>
               {userRole !== 'artist' && (
@@ -349,7 +348,6 @@ const Navbar = () => {
             {theme === "light" ? "Dark Mode 🌙" : "Light Mode ☀️"}
           </button>
         </div>
-      )}
     </nav>
   );
 };
