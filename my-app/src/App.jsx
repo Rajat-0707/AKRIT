@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { apiBase } from "./utils/api";
 import Home from "./pages/Home";
@@ -18,6 +18,39 @@ import { getToken, clearToken } from "./utils/auth";
 
 const App = () => {
   const [authChecked, setAuthChecked] = useState(false);
+  const location = useLocation();
+
+  useEffect(() => {
+    const globalObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.05, rootMargin: "0px 0px -20px 0px" });
+
+    const timer = setTimeout(() => {
+      const selectors = [
+        '.card', '.hero-title', '.hero-description', '.hero-buttons',
+        '.service-header', '.service-hero h1', '.service-hero p',
+        '.section-header', '.filter-bar', '.footer', '.aboutus-card',
+        '.booking-card', '.pricing-section', '.artist-info',
+        '.booking-details', '.client-message', '.your-response',
+        '.booking-message', '.artist-response', '.dash-panel',
+        '.account-type-card', '.login-form-container'
+      ].join(', ');
+      
+      const elements = document.querySelectorAll(selectors);
+      elements.forEach(el => {
+        if (!el.classList.contains('is-visible')) {
+          globalObserver.observe(el);
+        }
+      });
+    }, 100);
+    
+    return () => clearTimeout(timer);
+  }, [location.pathname]);
 
   useEffect(() => {
     const token = getToken();

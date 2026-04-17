@@ -8,8 +8,22 @@ const Navbar = () => {
   const [isAuthed, setIsAuthed] = useState(false);
   const [userName, setUserName] = useState("");
   const [userRole, setUserRole] = useState("");
+  const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
   const location = useLocation();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (theme === "dark") {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+    localStorage.setItem("theme", theme);
+  }, [theme]);
+
+  const toggleTheme = () => {
+    setTheme((prev) => (prev === "light" ? "dark" : "light"));
+  };
 
   const isHome = location.pathname === "/";
 
@@ -213,6 +227,9 @@ const Navbar = () => {
         ) : (
           <Link to="/login" className="nav-item">Login</Link>
         )}
+        <button className="nav-item" onClick={toggleTheme} style={{ fontSize: "1.2rem", padding: "0 0.5rem" }} aria-label="Toggle theme">
+          {theme === "light" ? "🌙" : "☀️"}
+        </button>
       </div>
 
       <button
@@ -328,6 +345,9 @@ const Navbar = () => {
           ) : (
             <Link className="mobile-nav-item" to="/login" onClick={() => setShowMobileMenu(false)}>Login</Link>
           )}
+          <button className="mobile-nav-item" onClick={() => { toggleTheme(); setShowMobileMenu(false); }} aria-label="Toggle theme" style={{ border: "none", background: "none", cursor: "pointer", fontFamily: "inherit" }}>
+            {theme === "light" ? "Dark Mode 🌙" : "Light Mode ☀️"}
+          </button>
         </div>
       )}
     </nav>

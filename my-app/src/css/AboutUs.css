@@ -1,12 +1,11 @@
-
 .aboutus-section {
-  padding: 4rem 5%;
+  padding: var(--space-16) 5%;
 }
 
 .aboutus-container {
   display: grid;
   grid-template-columns: 1.2fr 1fr; 
-  gap: 3rem;
+  gap: var(--space-12);
   align-items: center;
 }
 
@@ -15,15 +14,20 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: auto auto;
-  gap: 1.25rem;
+  gap: var(--space-5);
 }
 
 .aboutus-card {
-  background: white;
-  border-radius: 1rem;
+  background: var(--background-white);
+  border-radius: var(--radius-xl);
   overflow: hidden;
   box-shadow: var(--shadow-md);
   border: 1px solid var(--border-color);
+  transition: transform var(--transition-smooth);
+}
+
+.aboutus-card:hover {
+  transform: scale(1.02);
 }
 
 .aboutus-card img {
@@ -47,24 +51,25 @@
 
 .aboutus-badge {
   position: absolute;
-  top: 3rem;
-  right: 0.5rem;
-  background: white;
-  border-radius: 1rem;
+  top: var(--space-12);
+  right: var(--space-2);
+  background: var(--background-white);
+  border-radius: var(--radius-lg);
   box-shadow: var(--shadow-lg);
-  padding: 0.75rem 1rem;
+  padding: var(--space-4) var(--space-6);
   border: 1px solid var(--border-color);
 }
 
 .badge-title {
   font-weight: 800;
   color: var(--text-primary);
-  font-size: 1rem;
+  font-size: 1.25rem;
 }
 
 .badge-sub {
   color: var(--text-muted);
-  font-size: 0.9rem;
+  font-size: 0.95rem;
+  font-weight: 500;
 }
 
 .aboutus-right {
@@ -77,34 +82,39 @@
   letter-spacing: 0.2em;
   color: var(--primary-purple);
   font-weight: 700;
-  font-size: 1rem; 
+  font-size: 0.95rem; 
+  margin-bottom: var(--space-2);
+  text-transform: uppercase;
 }
 
 .aboutus-title {
-  font-size: 2.5rem;
+  font-size: clamp(2rem, 4vw, 3rem);
   font-weight: 800;
   color: var(--text-primary);
-  margin: 0 0 1rem 0;
+  margin: 0 0 var(--space-4) 0;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
 }
 
 .aboutus-text {
   color: var(--text-secondary);
-  line-height: 1.8;
-  margin-bottom: 1.5rem;
+  line-height: 1.7;
+  font-size: 1.1rem;
+  margin-bottom: var(--space-6);
 }
 
 .aboutus-cta {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding-left: 1.25rem;
-  padding-right: 1.25rem;
+  padding: 0.8rem 1.5rem;
+  font-weight: 600;
 }
 
 @media (max-width: 992px) {
   .aboutus-container {
     grid-template-columns: 1fr;
-    gap: 2rem;
+    gap: var(--space-8);
   }
   .aboutus-right {
     max-width: 100%;
@@ -113,12 +123,14 @@
 
 @media (max-width: 768px) {
   .aboutus-badge{
-    top: 0.5rem;
-    right: 0.5rem;
-    font-size: 0.875rem;
+    top: var(--space-2);
+    right: var(--space-2);
+    padding: var(--space-2) var(--space-3);
+  }
+  .badge-title {
+    font-size: 1rem;
   }
   .badge-sub{
-    font-size: 0.5rem;
+    font-size: 0.75rem;
   }
-  }
-
+}
