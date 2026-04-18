@@ -61,19 +61,8 @@ export function getInitialsAvatarSVG(name) {
   const initials = getInitials(name);
   const [c1, c2] = getAvatarGradient(name);
   // Encode for use in data URI
-  const svg = `<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 128 128'>
-  <defs>
-    <linearGradient id='g' x1='0' y1='0' x2='1' y2='1'>
-      <stop offset='0%' stop-color='${c1}'/>
-      <stop offset='100%' stop-color='${c2}'/>
-    </linearGradient>
-  </defs>
-  <rect width='128' height='128' rx='64' fill='url(%23g)'/>
-  <text x='64' y='64' dy='.35em' text-anchor='middle'
-        font-family='Inter,system-ui,sans-serif' font-weight='700'
-        font-size='48' fill='white'>${initials}</text>
-</svg>`;
-  return `data:image/svg+xml;utf8,${encodeURIComponent(svg)}`;
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="${c1}"/><stop offset="100%" stop-color="${c2}"/></linearGradient></defs><rect width="128" height="128" rx="64" fill="url(#g)"/><text x="64" y="64" dy=".35em" text-anchor="middle" font-family="Inter,system-ui,sans-serif" font-weight="700" font-size="48" fill="white">${initials}</text></svg>`;
+  return `data:image/svg+xml,${encodeURIComponent(svg)}`;
 }
 
 /**
