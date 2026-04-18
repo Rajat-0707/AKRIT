@@ -1,37 +1,50 @@
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import { Card, CardContent } from "@/components/ui/card";
+import { CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import "../css/ServicePage.css";
 import { apiBase, fetchJSON } from "../utils/api";
 import { getUser } from "../utils/auth";
+import { getAvatarSrc, getInitialsAvatarSVG } from "../utils/avatar";
 
 const serviceMeta = {
   singer: {
     name: 'Professional Vocalists',
     description: 'Talented singers for weddings, corporate events, and special celebrations',
     icon: '🎤',
-    color: 'from-purple-500 to-pink-500'
   },
   dance: {
     name: 'Dance Performance Groups',
     description: 'Dynamic dance troupes specializing in various styles and cultural performances',
     icon: '💃',
-    color: 'from-blue-500 to-teal-500'
   },
   choreographer: {
     name: 'Creative Choreographers',
     description: 'Expert choreographers who create stunning dance sequences and performances',
     icon: '🎭',
-    color: 'from-green-500 to-emerald-500'
   },
   teacher: {
     name: 'Vocal Coaches & Instructors',
     description: 'Professional vocal trainers and music educators for all skill levels',
     icon: '🎼',
-    color: 'from-orange-500 to-red-500'
   }
 };
+
+function ArtistAvatar({ artist, size = 48 }) {
+  const [err, setErr] = useState(false);
+  const src = getAvatarSrc(artist);
+  const fallback = getInitialsAvatarSVG(artist.name);
+  return (
+    <img
+      src={err ? fallback : src}
+      alt={artist.name}
+      className="artist-avatar-img"
+      style={{ width: size, height: size }}
+      onError={() => !err && setErr(true)}
+      loading="lazy"
+    />
+  );
+}
 
 export default function ServicePage() {
   const { serviceId } = useParams();
@@ -98,22 +111,6 @@ export default function ServicePage() {
         </div>
       </div>
 
-      {/* <section className={`service-hero ${service.color}`}>
-        <div className="container">
-          <div className="hero-content">
-            <div className="service-icon">{service.icon}</div>
-            <h1>{service.name}</h1>
-            <p>{service.description}</p>
-            <div className="hero-stats">
-              <span className="stat-item">
-                <strong>{items.length}</strong>
-                <span>Artists Available</span>
-              </span>
-            </div>
-          </div>
-        </div>
-      </section> */}
-
       <main className="service-main">
         <div className="container">
           <div className="content-header">
@@ -171,11 +168,7 @@ export default function ServicePage() {
                     {items.map((artist) => (
                       <article key={artist.id} className="artist-card">
                         <div className="card-image-container">
-                          <img
-                            src={artist.img || artist.img_url || '/public/profile.png'}
-                            alt={artist.name}
-                            className="artist-image"
-                          />
+                          <ArtistAvatar artist={artist} size={220} />
                           <div className="card-overlay">
                             <Button
                               className="quick-view-btn"
@@ -188,14 +181,18 @@ export default function ServicePage() {
 
                         <CardContent className="card-content">
                           <div className="artist-header">
-                            <h3 className="artist-name">{artist.name}</h3>
+                            <div className="artist-header-left">
+                              <ArtistAvatar artist={artist} size={40} />
+                              <h3 className="artist-name">{artist.name}</h3>
+                            </div>
                             <div className={`service-badge ${serviceId}`}>
                               {service.name}
                             </div>
                           </div>
 
                           <div className="artist-location">
-                            📍 {artist.city || artist.location || 'Location not specified'}
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                            {artist.city || artist.location || 'Location not specified'}
                           </div>
 
                           <div className="pricing-section">

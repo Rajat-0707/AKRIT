@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { Button } from "../components/ui/button";
-import { Card, CardContent } from "../components/ui/card";
 import { useNavigate } from "react-router-dom";
 import { apiBase, fetchJSON } from "../utils/api";
+import { getAvatarSrc, getInitialsAvatarSVG } from "../utils/avatar";
 import "../css/FindArtists.css";
 
 const categories = [
@@ -11,6 +11,60 @@ const categories = [
   { id: "choreographer", name: "Choreographers" },
   { id: "teacher", name: "Vocal Coaches" },
 ];
+
+function ArtistCardCompact({ artist, navigate }) {
+  const [imgErr, setImgErr] = useState(false);
+  const src = getAvatarSrc(artist);
+  const fallback = getInitialsAvatarSVG(artist.name);
+
+  return (
+    <article className="compact-artist-card" onClick={() => navigate(`/artists/${artist.id}`, { state: { artist } })}>
+      <div className="compact-card-top">
+        <img
+          src={imgErr ? fallback : src}
+          alt={artist.name}
+          className="compact-card-avatar"
+          onError={() => !imgErr && setImgErr(true)}
+          loading="lazy"
+        />
+        <div className="compact-card-info">
+          <h3 className="compact-card-name">{artist.name}</h3>
+          {artist.service && (
+            <span className="compact-card-category">
+              {categories.find(c => c.id === artist.service)?.name || artist.service}
+            </span>
+          )}
+        </div>
+      </div>
+
+      {((artist.location || "") || artist.budget_min != null || artist.budget_max != null) && (
+        <p className="compact-card-meta">
+          {(artist.location || "").trim() && (
+            <span className="compact-meta-item">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              {artist.location}
+            </span>
+          )}
+          {(() => {
+            const minB = artist.budget_min != null ? Number(artist.budget_min) : null;
+            const maxB = artist.budget_max != null ? Number(artist.budget_max) : null;
+            if (minB != null && maxB != null) return <span className="compact-meta-item">₹{minB.toLocaleString()} - ₹{maxB.toLocaleString()}</span>;
+            if (minB != null) return <span className="compact-meta-item">from ₹{minB.toLocaleString()}</span>;
+            if (maxB != null) return <span className="compact-meta-item">up to ₹{maxB.toLocaleString()}</span>;
+            return null;
+          })()}
+        </p>
+      )}
+
+      <Button
+        className="btn btn-purple btn-full compact-card-cta"
+        onClick={(e) => { e.stopPropagation(); navigate(`/artists/${artist.id}`, { state: { artist } }); }}
+      >
+        View Profile
+      </Button>
+    </article>
+  );
+}
 
 const FindArtists = () => {
   const navigate = useNavigate();
@@ -93,7 +147,6 @@ const FindArtists = () => {
           </form>
         </div>
 
-        {/* Collapsible Filters Section */}
         {showFilters && (
           <div className="filters-container-inline">
             <select
@@ -158,7 +211,7 @@ const FindArtists = () => {
 
         {error && <div className="error-message">{error}</div>}
         {!error && (
-          <div className="artists-grid">
+          <div className="artists-grid search-results-grid">
             {!loading && results.length === 0 ? (
               <div className="no-results">
                 <p>No artists found matching your criteria.</p>
@@ -166,35 +219,7 @@ const FindArtists = () => {
               </div>
             ) : (
               results.map((artist) => (
-                <div key={artist.id} className="artist-card">
-                  <Card className="card">
-                    <img
-                      src={artist.img || "/avt.png"}
-                      alt={artist.name}
-                      className="card-image"
-                    />
-                    <CardContent className="card-content">
-                      <h3 className="card-title">{artist.name}</h3>
-                      {artist.role && <p className="card-role">{artist.role}</p>}
-                      <p className="card-subtext">
-                        {(artist.location || "")} {(() => {
-                          const minB = artist.budget_min != null ? Number(artist.budget_min) : null;
-                          const maxB = artist.budget_max != null ? Number(artist.budget_max) : null;
-                          if (minB != null && maxB != null) return ` • ₹${minB.toLocaleString()} - ₹${maxB.toLocaleString()}`;
-                          if (minB != null) return ` • from ₹${minB.toLocaleString()}`;
-                          if (maxB != null) return ` • up to ₹${maxB.toLocaleString()}`;
-                          return "";
-                        })()} {artist.service ? ` • ${categories.find(c => c.id === artist.service)?.name || artist.service}` : ""}
-                      </p>
-                      <Button
-                        className="btn btn-purple btn-full"
-                        onClick={() => navigate(`/artists/${artist.id}`, { state: { artist } })}
-                      >
-                        View Profile
-                      </Button>
-                    </CardContent>
-                  </Card>
-                </div>
+                <ArtistCardCompact key={artist.id} artist={artist} navigate={navigate} />
               ))
             )}
           </div>

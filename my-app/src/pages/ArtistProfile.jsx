@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button";
 import "../css/ArtistProfile.css";
 import { apiBase, fetchJSON } from "../utils/api";
 import { getUser } from "../utils/auth";
-import { DEFAULT_AVATAR_SVG } from "../utils/avatar";
+import { getAvatarSrc, getInitialsAvatarSVG } from "../utils/avatar";
 
 export default function ArtistProfile() {
   const { id } = useParams();
@@ -20,6 +20,7 @@ export default function ArtistProfile() {
   const [error, setError] = useState("");
   const [showBookingModal, setShowBookingModal] = useState(false);
   const [bookingSuccess, setBookingSuccess] = useState(false);
+  const [imgError, setImgError] = useState(false);
 
   const breadcrumbs = useMemo(() => [
     { label: "Home", to: "/" },
@@ -50,6 +51,9 @@ export default function ArtistProfile() {
     return () => { mounted = false; };
   }, [id, artist]);
 
+  const avatarSrc = artist ? getAvatarSrc(artist) : null;
+  const fallbackSrc = artist ? getInitialsAvatarSVG(artist.name) : null;
+
   return (
     <div className="app-container">
       <Navbar />
@@ -75,24 +79,29 @@ export default function ArtistProfile() {
           <section className="profile-hero">
             <div className="profile-media">
               <img
-                src={artist.img || artist.img_url || '/avt.png'}
+                src={imgError ? fallbackSrc : avatarSrc}
                 alt={artist.name}
                 className="profile-avatar"
+                onError={() => !imgError && setImgError(true)}
               />
             </div>
             <div className="profile-summary">
               <h1 className="profile-name">{artist.name}</h1>
               {artist.role && <div className="profile-role">{artist.role}</div>}
               <div className="profile-meta">
-                {(artist.location || "").trim() && <span>{artist.location}</span>}
-                {(artist.service || "").trim() && <span className="dot">•</span>}
+                {(artist.location || "").trim() && (
+                  <span className="meta-item">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                    {artist.location}
+                  </span>
+                )}
                 {(artist.service || "").trim() && <span className="badge">{artist.service}</span>}
                 {(artist.rating != null) && (
-                  <>
-                    <span className="dot">•</span>
-                    <span>{Number(artist.rating).toFixed(1)} ★</span>
+                  <span className="meta-item rating-inline">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    {Number(artist.rating).toFixed(1)}
                     <span className="muted">({artist.reviews || 0})</span>
-                  </>
+                  </span>
                 )}
               </div>
               {(artist.budget_min != null || artist.budget_max != null) && (
@@ -117,7 +126,9 @@ export default function ArtistProfile() {
                 >
                   Request Booking
                 </Button>
-                <Button variant="outline" className="btn btn-secondary" Click={() => navigate(-1)}>Back</Button>
+                <Button variant="outline" className="btn btn-ghost" onClick={() => navigate(-1)}>
+                  ← Back
+                </Button>
               </div>
             </div>
           </section>
@@ -130,7 +141,7 @@ export default function ArtistProfile() {
                 <CardContent className="card-content">
                   <h2 className="section-title">About</h2>
                   <p className="about-text">
-                    {artist.bio || "This artist hasn’t added a bio yet."}
+                    {artist.bio || "This artist hasn't added a bio yet."}
                   </p>
                 </CardContent>
               </Card>

@@ -1,10 +1,8 @@
-import { Card, CardContent } from "./ui/card";
-import { Button } from "./ui/button";
-import { DEFAULT_AVATAR_SVG } from "../utils/avatar";
-
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { Button } from "./ui/button";
 import { apiBase, fetchJSON } from "../utils/api";
+import { getAvatarSrc, getInitialsAvatarSVG } from "../utils/avatar";
 
 const FeaturedArtists = () => {
   const navigate = useNavigate();
@@ -40,31 +38,29 @@ const FeaturedArtists = () => {
           Verified performers and industry professionals ready for your next event
         </p>
       </div>
-      {loading && <div style={{ padding: 12 }}>Loading artists…</div>}
-      {error && !loading && <div style={{ color: "#b91c1c", padding: 12 }}>{error}</div>}
+
+      {loading && (
+        <div className="featured-loading">
+          <div className="featured-spinner"></div>
+          <span>Loading artists…</span>
+        </div>
+      )}
+
+      {error && !loading && (
+        <div className="featured-error">{error}</div>
+      )}
+
       {!loading && !error && (
-        <div className="artists-grid">
+        <div className="artists-grid featured-grid">
           {items.length === 0 ? (
-            <div style={{ padding: 12, opacity: 0.8 }}>No artists found.</div>
+            <div className="featured-empty">No artists found.</div>
           ) : (
             items.map((artist) => (
-              <div key={artist.id} className="artist-card">
-                <Card className="card">
-                  <img src={artist.img || artist.img_url || '/avt.png'}
-                       alt={artist.name}
-                       className="card-image" />
-                  <CardContent className="card-content" id="feat">
-                    <h3 className="card-title">{artist.name}</h3>
-                    {artist.role && <p className="card-role">{artist.service}</p>}
-                    <Button
-                      className="btn btn-purple btn-full"
-                      onClick={() => navigate(`/artists/${artist.id}`, { state: { artist } })}
-                    >
-                      View Profile
-                    </Button>
-                  </CardContent>
-                </Card>
-              </div>
+              <FeaturedCard
+                key={artist.id}
+                artist={artist}
+                onViewProfile={() => navigate(`/artists/${artist.id}`, { state: { artist } })}
+              />
             ))
           )}
         </div>
@@ -72,5 +68,46 @@ const FeaturedArtists = () => {
     </section>
   );
 };
+
+/* ── Compact Featured Card ── */
+function FeaturedCard({ artist, onViewProfile }) {
+  const [imgErr, setImgErr] = useState(false);
+  const src = getAvatarSrc(artist);
+  const fallback = getInitialsAvatarSVG(artist.name);
+
+  return (
+    <article className="featured-card" onClick={onViewProfile}>
+      <div className="featured-card-header">
+        <img
+          src={imgErr ? fallback : src}
+          alt={artist.name}
+          className="featured-avatar"
+          onError={() => !imgErr && setImgErr(true)}
+          loading="lazy"
+        />
+        <div className="featured-card-info">
+          <h3 className="featured-card-name">{artist.name}</h3>
+          {artist.service && (
+            <span className="featured-category-badge">{artist.service}</span>
+          )}
+        </div>
+      </div>
+
+      {artist.location && (
+        <div className="featured-card-location">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span>{artist.location}</span>
+        </div>
+      )}
+
+      <Button
+        className="btn btn-purple btn-full featured-cta"
+        onClick={(e) => { e.stopPropagation(); onViewProfile(); }}
+      >
+        View Profile
+      </Button>
+    </article>
+  );
+}
 
 export default FeaturedArtists;

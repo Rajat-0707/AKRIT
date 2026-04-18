@@ -31,7 +31,8 @@ const App = () => {
     }, { threshold: 0.05, rootMargin: "0px 0px -20px 0px" });
 
     const selectors = [
-      '.card', '.hero-title', '.hero-description', '.hero-buttons',
+      '.card', '.featured-card', '.compact-artist-card',
+      '.hero-title', '.hero-description', '.hero-buttons',
       '.service-header', '.service-hero h1', '.service-hero p',
       '.section-header', '.filter-bar', '.footer', '.aboutus-card',
       '.booking-card', '.pricing-section', '.artist-info',

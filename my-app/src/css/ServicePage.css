@@ -45,29 +45,14 @@
   width: 1.25rem;
   height: 1.25rem;
 }
- 
+
+/* ── Service Hero ── */
 .service-hero {
   background: linear-gradient(135deg, rgba(79, 70, 229, 0.9) 0%, rgba(67, 56, 202, 0.9) 100%);
   color: white;
   padding: var(--space-16) 0;
   position: relative;
   overflow: hidden;
-}
-
-.service-hero.from-purple-500 {
-  background: linear-gradient(135deg, var(--primary-purple) 0%, var(--primary-purple-light) 100%);
-}
-
-.service-hero.from-blue-500 {
-  background: linear-gradient(135deg, #3b82f6 0%, #0ea5e9 100%);
-}
-
-.service-hero.from-green-500 {
-  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
-}
-
-.service-hero.from-orange-500 {
-  background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
 }
 
 .hero-content {
@@ -121,6 +106,7 @@
   font-weight: 500;
 }
 
+/* ── Main Content ── */
 .service-main {
   padding: var(--space-12) 0;
 }
@@ -129,12 +115,12 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  margin-bottom: var(--space-12);
+  margin-bottom: var(--space-10);
   gap: var(--space-8);
 }
 
 .header-info h2 {
-  font-size: 2.25rem;
+  font-size: 2rem;
   font-weight: 800;
   color: var(--text-primary);
   margin-bottom: var(--space-2);
@@ -143,7 +129,7 @@
 
 .header-info p {
   color: var(--text-secondary);
-  font-size: 1.125rem;
+  font-size: 1.05rem;
 }
  
 .sort-controls {
@@ -178,7 +164,8 @@
   border-color: var(--primary-purple);
   box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.15);
 }
- 
+
+/* ── States ── */
 .loading-state, .error-state, .empty-state {
   display: flex;
   flex-direction: column;
@@ -248,11 +235,12 @@
   max-width: 400px;
   line-height: 1.6;
 }
- 
+
+/* ── Artists Grid ── */
 .artists-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-  gap: var(--space-8);
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: var(--space-6);
   margin-bottom: var(--space-12);
 }
 
@@ -273,12 +261,29 @@
   transform: translateY(-4px);
   box-shadow: var(--shadow-hover);
 }
- 
+
+/* ── Card Image Area ── */
 .card-image-container {
   position: relative;
   overflow: hidden;
-  height: 220px;
+  height: 200px;
   background: var(--background-light);
+}
+
+.artist-avatar-img {
+  object-fit: cover;
+  border-radius: 0;
+}
+
+.card-image-container .artist-avatar-img {
+  width: 100% !important;
+  height: 100% !important;
+  border-radius: 0;
+}
+
+.artist-card:hover .card-image-container .artist-avatar-img {
+  transform: scale(1.05);
+  transition: transform var(--transition-smooth);
 }
 
 .artist-image {
@@ -291,7 +296,8 @@
 .artist-card:hover .artist-image {
   transform: scale(1.05);
 }
- 
+
+/* ── Card Overlay ── */
 .card-overlay {
   position: absolute;
   inset: 0;
@@ -312,9 +318,10 @@
   background: rgba(255, 255, 255, 0.9);
   color: var(--text-primary);
   border: none;
-  padding: 0.75rem 1.5rem;
+  padding: 0.6rem 1.25rem;
   border-radius: var(--radius-md);
   font-weight: 600;
+  font-size: 0.85rem;
   backdrop-filter: blur(8px);
   transition: all var(--transition-fast);
 }
@@ -324,65 +331,88 @@
   color: var(--bg-1);
   transform: translateY(-2px);
 }
- 
+
+/* ── Card Content ── */
 .card-content {
-  padding: var(--space-6);
+  padding: var(--space-5);
   flex-grow: 1;
   display: flex;
   flex-direction: column;
 }
- 
+
+/* ── Artist Header with inline avatar ── */
 .artist-header {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  margin-bottom: var(--space-4);
-  gap: var(--space-4);
+  margin-bottom: var(--space-3);
+  gap: var(--space-3);
+}
+
+.artist-header-left {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  flex: 1;
+  min-width: 0;
+}
+
+.artist-header-left .artist-avatar-img {
+  border-radius: 50%;
+  flex-shrink: 0;
+  border: 2px solid var(--background-light);
 }
 
 .artist-name {
-  font-size: 1.25rem;
+  font-size: 1.1rem;
   font-weight: 700;
   color: var(--text-primary);
   margin: 0;
   flex: 1;
   letter-spacing: -0.01em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .service-badge {
-  padding: 0.25rem 0.75rem;
+  padding: 0.2rem 0.6rem;
   border-radius: var(--radius-full);
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.05em;
   background: var(--background-light);
   color: var(--text-secondary);
+  flex-shrink: 0;
+  white-space: nowrap;
 }
 
 .service-badge.singer { background-color: #fef3c7; color: #d97706; }
 .service-badge.dance { background-color: #dbeafe; color: #1d4ed8; }
 .service-badge.choreographer { background-color: #dcfce7; color: #166534; }
 .service-badge.teacher { background-color: #fef2f2; color: #dc2626; }
- 
+
+/* ── Location ── */
 .artist-location {
   color: var(--text-secondary);
-  font-size: 0.9rem;
-  margin-bottom: var(--space-4);
+  font-size: 0.85rem;
+  margin-bottom: var(--space-3);
   display: flex;
   align-items: center;
   gap: var(--space-1);
 }
- 
+
+/* ── Pricing ── */
 .pricing-section {
   background: var(--background-light);
   padding: var(--space-3) var(--space-4);
   border-radius: var(--radius-md);
-  margin-bottom: var(--space-4);
+  margin-bottom: var(--space-3);
 }
 
 .price-label {
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   font-weight: 600;
   color: var(--text-muted);
   text-transform: uppercase;
@@ -391,18 +421,19 @@
 }
 
 .price-value {
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   font-weight: 800;
   color: var(--text-primary);
 }
- 
+
+/* ── Rating ── */
 .rating-section {
-  margin-bottom: var(--space-6);
+  margin-bottom: var(--space-4);
   flex-grow: 1;
 }
 
 .rating {
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   color: #f59e0b;
   font-weight: 600;
   margin-bottom: var(--space-1);
@@ -412,7 +443,8 @@
   font-size: 0.8rem;
   color: var(--text-muted);
 }
- 
+
+/* ── Card Actions ── */
 .card-actions {
   display: flex;
   gap: var(--space-3);
@@ -421,10 +453,10 @@
 
 .action-btn {
   flex: 1;
-  padding: 0.8rem 1rem;
+  padding: 0.7rem 1rem;
   border-radius: var(--radius-md);
   font-weight: 500;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   transition: all var(--transition-fast);
   display: flex;
   align-items: center;
@@ -475,11 +507,12 @@
   text-align: center;
 }
 
+/* ── Responsive ── */
 @media (max-width: 768px) {
   .content-header {
     flex-direction: column;
     align-items: stretch;
-    gap: var(--space-6);
+    gap: var(--space-4);
   }
 
   .sort-controls {
@@ -488,5 +521,10 @@
 
   .artists-grid {
     grid-template-columns: 1fr;
+    gap: var(--space-4);
+  }
+
+  .card-image-container {
+    height: 180px;
   }
 }
