@@ -221,6 +221,10 @@
   box-shadow: var(--shadow-lg);
 }
 
+@media (max-width: 900px) {
+  .auth-card { padding: var(--space-6); }
+}
+
 .auth-header {
   margin-bottom: var(--space-6);
 }
