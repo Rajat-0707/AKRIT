@@ -3,6 +3,8 @@ import User from '../models/User.js';
 import ArtistProfile from '../models/ArtistProfile.js';
 
 const router = express.Router();
+
+const client=require('../lib/client.js');
  
 router.get('/artists', async (req, res) => {
   try {

@@ -5,6 +5,8 @@ import { authRequired } from '../middleware/auth.js';
 
 const router = express.Router();
 
+const client= require('../lib/client.js');
+
  
 router.post('/bookings', authRequired, async (req, res) => {
   try {
@@ -54,11 +56,18 @@ router.post('/bookings', authRequired, async (req, res) => {
  
 router.get('/bookings/my-requests', authRequired, async (req, res) => {
   try {
+    const redis_my_bookings = await client.get(`client:${req.user.sub}:my_bookings`);
+    if (redis_my_bookings) {
+      console.log('My bookings cache hit');
+      return res.json({ success: true, bookings: JSON.parse(redis_my_bookings) });
+    }
+    console.log('My bookings cache miss');
     const bookings = await BookingRequest.find({ client_id: req.user.sub })
       .populate('artist_id', 'name email category city')
       .sort({ createdAt: -1 })
       .lean();
 
+    await client.set(`client:${req.user.sub}:my_bookings`, JSON.stringify(bookings), 'EX', 3600); // Cache for 1 hour
     res.json({ success: true, bookings });
   } catch (err) {
     console.error('Error fetching bookings:', err);
@@ -69,11 +78,19 @@ router.get('/bookings/my-requests', authRequired, async (req, res) => {
   
 router.get('/bookings/received', authRequired, async (req, res) => {
   try {
+
+    const redis_bokings = await client.get(`artist:${req.user.sub}:received_bookings`);
+    if (redis_bokings) {
+      console.log('Received bookings cache hit');
+      return res.json({ success: true, bookings: JSON.parse(redis_bokings) });
+    }
+    console.log('Received bookings cache miss');
     const bookings = await BookingRequest.find({ artist_id: req.user.sub })
       .populate('client_id', 'name email phone')
       .sort({ createdAt: -1 })
       .lean();
 
+    await client.set(`artist:${req.user.sub}:received_bookings`, JSON.stringify(bookings), 'EX', 3600); // Cache for 1 hour
     res.json({ success: true, bookings });
   } catch (err) {
     console.error('Error fetching received bookings:', err);

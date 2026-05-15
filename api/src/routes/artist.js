@@ -4,10 +4,18 @@ import ArtistProfile from '../models/ArtistProfile.js';
 import { authRequired } from '../middleware/auth.js';
 import { upload, getImageUrl } from '../middleware/upload.js';
 
+const client=require('../lib/client.js');
+
 const router = express.Router();
  
 router.get('/artist/me', authRequired, async (req, res) => {
   try {
+
+    const artist=await client.get(`artist:${req.user?.sub}`);
+    if (artist) {
+      return res.json({ success: true, artist: JSON.parse(artist) });
+    }
+    
     const userId = req.user?.sub;
     const user = await User.findById(userId).select('role name email category city');
     if (!user) return res.status(404).json({ success: false, error: 'User not found' });
@@ -30,6 +38,9 @@ router.get('/artist/me', authRequired, async (req, res) => {
       rating: profile?.rating_avg ?? null,
       reviews: profile?.reviews_count ?? 0,
     };
+
+    const artistCacheKey = `artist:${user._id}`;
+    await client.set(artistCacheKey, JSON.stringify(resp), 'EX', 3600); // Cache for 1 hour
 
     return res.json({ success: true, artist: resp });
   } catch (e) {

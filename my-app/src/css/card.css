@@ -37,7 +37,6 @@
 
 .card-content {
   padding: var(--space-6);
-  padding-top: 0;
   flex-grow: 1;
 }
 
