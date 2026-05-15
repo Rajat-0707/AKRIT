@@ -4,6 +4,7 @@ import User from '../models/User.js';
 import ArtistProfile from '../models/ArtistProfile.js';
 import { authRequired, signToken } from '../middleware/auth.js';
 import { upload, getImageUrl } from '../middleware/upload.js';
+import client from '../lib/client.js';
 
 const router = express.Router();
  
@@ -98,6 +99,16 @@ router.post('/login', async (req, res) => {
       return res.status(400).json({ success: false, error: 'Invalid role' });
     }
 
+    // Rate limiting: Check login attempts
+    const rateLimitKey = `rate_limit:login:${emailNorm}`;
+    const attempts = await client.incr(rateLimitKey);
+    if (attempts === 1) {
+      await client.expire(rateLimitKey, 900); // 15 minute window
+    }
+    if (attempts > 5) {
+      return res.status(429).json({ success: false, error: 'Too many login attempts. Try again in 15 minutes.' });
+    }
+
     const query = role ? { email: emailNorm, role } : { email: emailNorm };
     const user = await User.findOne(query);
     if (!user) return res.status(401).json({ success: false, error: 'Invalid credentials' });
@@ -106,6 +117,9 @@ router.post('/login', async (req, res) => {
     if (!ok) return res.status(401).json({ success: false, error: 'Invalid credentials' });
 
     const token = signToken({ sub: String(user._id), email: user.email, role: user.role, name: user.name });
+
+    // Clear rate limit on successful login
+    await client.del(rateLimitKey);
 
     return res.json({
       success: true,

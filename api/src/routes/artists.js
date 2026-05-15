@@ -17,6 +17,15 @@ router.get('/artists', async (req, res) => {
     const maxBudget = req.query.maxBudget !== undefined ? Number(req.query.maxBudget) : undefined;
     const limit = Math.max(1, Math.min(100, Number(req.query.limit) || 50));
     const offset = Math.max(0, Number(req.query.offset) || 0);
+    
+    // Check Redis cache for search results
+    const cacheKey = `artists:search:${q}:${service}:${location}:${minBudget}:${maxBudget}:${limit}:${offset}`;
+    const cachedResult = await client.get(cacheKey);
+    if (cachedResult) {
+      console.log('Artists search cache HIT');
+      return res.json(JSON.parse(cachedResult));
+    }
+    console.log('Artists search cache MISS');
  
     const userMatch = { role: 'artist' };
     if (q) {
@@ -95,7 +104,12 @@ router.get('/artists', async (req, res) => {
     });
 
     console.log(`Returning ${items.length} artists`);
-    return res.json({ success: true, items, count: items.length });
+    
+    // Cache search results for 30 minutes
+    const resultData = { success: true, items, count: items.length };
+    await client.set(cacheKey, JSON.stringify(resultData), 'EX', 1800);
+    
+    return res.json(resultData);
   } catch (e) {
     console.error('Artists list error', e);
     return res.status(500).json({ success: false, error: 'DB error' });

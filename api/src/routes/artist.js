@@ -105,6 +105,14 @@ router.post('/artist/update', authRequired, upload, async (req, res) => {
         { upsert: true }
       );
       console.log('ArtistProfile updated successfully');
+      
+      // Clear Redis caches for this artist
+      await client.del(`artist:${userId}`);
+      // Clear all artist search caches
+      const searchKeys = await client.keys('artists:search:*');
+      if (searchKeys.length > 0) {
+        await client.del(...searchKeys);
+      }
     }
  
     const response = { success: true };

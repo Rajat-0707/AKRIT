@@ -41,6 +41,10 @@ router.post('/bookings', authRequired, async (req, res) => {
     });
 
     await booking.save();
+    
+    // Clear Redis caches for both users
+    await client.del(`client:${req.user.sub}:my_bookings`);
+    await client.del(`artist:${artist_id}:received_bookings`);
  
     await booking.populate('artist_id', 'name email');
     await booking.populate('client_id', 'name email');
@@ -150,6 +154,10 @@ router.patch('/bookings/:id/status', authRequired, async (req, res) => {
     
     await booking.save();
 
+    // Clear Redis caches for both users
+    await client.del(`artist:${req.user.sub}:received_bookings`);
+    await client.del(`client:${booking.client_id}:my_bookings`);
+
     res.json({ success: true, booking, message: 'Booking status updated' });
   } catch (err) {
     console.error('Error updating booking status:', err);
@@ -175,6 +183,10 @@ router.delete('/bookings/:id', authRequired, async (req, res) => {
 
     booking.status = 'cancelled';
     await booking.save();
+
+    // Clear Redis caches for both users
+    await client.del(`artist:${booking.artist_id}:received_bookings`);
+    await client.del(`client:${req.user.sub}:my_bookings`);
 
     res.json({ success: true, message: 'Booking cancelled successfully' });
   } catch (err) {
