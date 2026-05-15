@@ -5,7 +5,10 @@ import { authRequired } from '../middleware/auth.js';
 
 const router = express.Router();
 
-const client= require('../lib/client.js');
+// const client= require('../lib/client.js');
+
+
+import client from '../lib/client.js';
 
  
 router.post('/bookings', authRequired, async (req, res) => {

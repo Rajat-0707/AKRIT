@@ -4,7 +4,9 @@ import ArtistProfile from '../models/ArtistProfile.js';
 import { authRequired } from '../middleware/auth.js';
 import { upload, getImageUrl } from '../middleware/upload.js';
 
-const client=require('../lib/client.js');
+// const client=require('../lib/client.js');
+
+import client from '../lib/client.js';
 
 const router = express.Router();
  
@@ -15,7 +17,7 @@ router.get('/artist/me', authRequired, async (req, res) => {
     if (artist) {
       return res.json({ success: true, artist: JSON.parse(artist) });
     }
-    
+
     const userId = req.user?.sub;
     const user = await User.findById(userId).select('role name email category city');
     if (!user) return res.status(404).json({ success: false, error: 'User not found' });

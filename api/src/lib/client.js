@@ -1,5 +1,7 @@
-// redis.js
-const Redis = require("ioredis");
+// // redis.js
+// const Redis = require("ioredis");
+
+import Redis from "ioredis";
 
 const redis = new Redis(process.env.REDIS_URL);
 
