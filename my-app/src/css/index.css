@@ -403,6 +403,37 @@ body {
   align-items: center;
 }
 
+/* Scroll-down indicator */
+.scroll-down-indicator {
+  position: absolute;
+  bottom: var(--space-6);
+  left: 50%;
+  transform: translateX(-50%);
+  background: none;
+  border: 2px solid var(--border-color);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--text-muted);
+  transition: color var(--transition-fast), border-color var(--transition-fast);
+  animation: hero-bounce 2s ease-in-out infinite;
+  z-index: 2;
+}
+
+.scroll-down-indicator:hover {
+  color: var(--primary-purple);
+  border-color: var(--primary-purple);
+}
+
+@keyframes hero-bounce {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(6px); }
+}
+
 .hero-title {
   font-size: clamp(2.5rem, 5vw, 4.5rem);
   font-weight: 800;
