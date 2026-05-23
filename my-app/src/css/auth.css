@@ -4,6 +4,7 @@
   flex-direction: column;
   background: var(--background-light);
   color: var(--text-primary);
+  overflow: hidden;
 }
 
 /* ── Auth Selection (Join Page) ── */

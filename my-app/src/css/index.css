@@ -90,6 +90,10 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+
+html {
+  overflow-x: hidden;
+}
 }
 
 body {
@@ -100,6 +104,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   transition: background-color var(--transition-smooth), color var(--transition-smooth);
+  overflow-x: hidden;
 }
 
 .app-container {
@@ -510,6 +515,7 @@ body {
 .artists-section {
   padding: var(--space-16) 5%;
   background-color: var(--background-light);
+  overflow: hidden;
 }
 
 .section-header {
@@ -562,6 +568,8 @@ body {
     padding-right: 5%;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
+    max-width: 100%;
+    width: 100%;
   }
   .artists-grid::-webkit-scrollbar {
     display: none;
